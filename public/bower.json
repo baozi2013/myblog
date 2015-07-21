@@ -1,0 +1,14 @@
+{
+  "name": "p1",
+  "version": "0.0.0",
+  "authors": [
+    "tianhengzhou <zth198814@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.3",
+    "fontawesome": "~4.3.0",
+    "jquery": "~2.1.4",
+    "masonry": "desandro/masonry#~3.3.1"
+  }
+}
