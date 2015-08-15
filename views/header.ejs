@@ -14,15 +14,18 @@
     <div class="container">
       <ul class="nav navbar-nav">
         <li class="<%= title == 'Home' ? 'active' : ''%>"><a title="home" href="/">Home</a></li>
+        <li class="<%= title == 'Login' ? 'active' : ''%>"><a title="home" href="/login">Login</a></li>
+        <li class="<%= title == 'Register' ? 'active' : ''%>"><a title="home" href="/reg">Register</a></li>
+
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <% if(locals.user) { %>
-        <li><a href="/u/<%= locals.user.name %>"><%= locals.user.name %></a></li>
-        <% } %>
-        <li></li>
-        <li>
-        </li>
-      </ul>
+      <!--<ul class="nav navbar-nav navbar-right">-->
+        <!--<% if(locals.user) { %>-->
+        <!--<li><a href="/u/<%= locals.user.name %>"><%= locals.user.name %></a></li>-->
+        <!--<% } %>-->
+        <!--<li></li>-->
+        <!--<li>-->
+        <!--</li>-->
+      <!--</ul>-->
     </div>
 
   </header>

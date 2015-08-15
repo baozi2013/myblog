@@ -13,10 +13,10 @@ module.exports = function(app) {
     res.render('index', { title: 'Home' });
   });
   app.get('/reg', function (req, res) {
-    res.render('index', { title: 'Register' });
+    res.render('register', { title: 'Register' });
   });
   app.get('/login', function (req, res) {
-    res.render('index', { title: 'Login' });
+    res.render('login', { title: 'Login' });
   });
   app.get('/post', function (req, res) {
     res.render('index', { title: 'Post' });
