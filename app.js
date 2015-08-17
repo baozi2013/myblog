@@ -6,14 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var user = require('./models/user');
+var config = require('./models/config').dev;
 var settings = require('./settings');
 var app = express();
-
+var flash = require('connect-flash');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+app.use(flash());
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -21,10 +22,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-var env = process.env.NODE_ENV =  process.env.NODE_ENV || 'dev';
-var config = require('./models/config')[env];
-var db = require('./models/db')(config);
-
+//var env = process.env.NODE_ENV =  process.env.NODE_ENV || 'dev';
+//var config = require('./models/config')[env];
+//var db = require('./models/db');
+//console.log(db)
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 app.use(session({
@@ -37,7 +38,6 @@ app.use(session({
 
 
 routes(app);
-users(app);
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });

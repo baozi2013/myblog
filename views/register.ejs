@@ -1,9 +1,33 @@
 <%- include header%>
-<form method="post">
-    Username: <input type="text" name="name"/><br>
-    Password: <input type="password" name="password"/><br>
-    Repeat Password: <input type="password" name="password"/><br>
-    Password: <input type="email" name="password"/><br>
-    <button type="submit" class="btn btn-default">Submit</button>
+<form class="form-horizontal" method="post" role="form">
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Username:</label>
+        <div class="col-sm-5">
+            <input type="text" name="name" class="form-control" placeholder="Username">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">Password:</label>
+        <div class="col-sm-5">
+            <input type="password" name="password" class="form-control" placeholder="Password">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">Repeat Password:</label>
+        <div class="col-sm-5">
+            <input type="password" name="password-repeat" class="form-control" placeholder="Repeat Password">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">Email:</label>
+        <div class="col-sm-5">
+            <input type="email" name="email" class="form-control" placeholder="Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-5">
+            <input type="submit" value="Register" class="btn btn-default"/>
+        </div>
+    </div>
 </form>
 <%- include footer%>
