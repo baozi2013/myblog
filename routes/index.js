@@ -63,7 +63,28 @@ module.exports = function(app) {
     });
   });
   app.get('/login', function (req, res) {
-    res.render('login', { title: 'Login' });
+    res.render('login', {
+      title: 'Login',
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error:req.flash('error').toString()
+    });
+  });
+  app.post('/login',function(req, res){
+    var password = crypto.createHash('md5').update(req.body.password).digest('hex');
+    User.get(req.body.name, function (err,user){
+      if (!user){
+        req.flash('error', 'User does not exist');
+        return res.redirect('/login')
+      }
+      if (user.password != password){
+        req.flash('error', 'Wrong Password');
+        return res.redirect('login');
+      }
+      req.session.user = user;
+      req.flash('success', 'Login Successful');
+      res.redirect('/');
+    });
   });
   app.get('/post', function (req, res) {
     res.render('index', { title: 'Post' });
