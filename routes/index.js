@@ -11,8 +11,13 @@ var crypto = require('crypto'),
 
 module.exports = function(app) {
   app.get('/', function (req, res) {
-    res.render('index', { title: 'Home' });
+    res.render('index', {
+      title: 'Home' ,
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()});
   });
+  app.get('/reg',checkNotLogin);
   app.get('/reg', function (req, res) {
     res.render('register',{
       title: 'Registration',
@@ -21,6 +26,7 @@ module.exports = function(app) {
       error: req.flash('error').toString()
     });
   });
+  app.post('/reg',checkNotLogin);
   app.post('/reg', function (req, res) {
     var name = req.body.name,
         password = req.body.password,
@@ -62,6 +68,7 @@ module.exports = function(app) {
       });
     });
   });
+  app.get('/login', checkNotLogin);
   app.get('/login', function (req, res) {
     res.render('login', {
       title: 'Login',
@@ -70,6 +77,7 @@ module.exports = function(app) {
       error:req.flash('error').toString()
     });
   });
+  app.post('/login',checkNotLogin);
   app.post('/login',function(req, res){
     var password = crypto.createHash('md5').update(req.body.password).digest('hex');
     User.get(req.body.name, function (err,user){
@@ -90,6 +98,22 @@ module.exports = function(app) {
     res.render('index', { title: 'Post' });
   });
   app.get('/logout', function (req, res) {
-    res.render('index', { title: 'Home' });
+    req.session.user = null;
+    req.flash('success','Logout Successful!');
+    res.redirect('/')
   });
 };
+function checkLogin(req,res,next){
+  if (!req.session.user){
+    req.flash('error','No login yet');
+    res.redirect('/login');
+  }
+  next();
+}
+function checkNotLogin(req,res,next){
+  if (req.session.user){
+    req.flash('error', 'Login done');
+    res.redirect('back');
+  }
+  next();
+}

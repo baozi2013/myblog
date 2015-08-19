@@ -14,9 +14,13 @@
     <div class="container">
       <ul class="nav navbar-nav">
         <li class="<%= title == 'Home' ? 'active' : ''%>"><a title="home" href="/">Home</a></li>
+        <% if (locals.user){%>
+        <li class="<%= title == 'Post' ? 'active' : ''%>"><a title="post" href="/post">Post</a></li>
+        <li class="<%= title == 'Logout' ? 'active' : ''%>"><a title="logout" href="/logout">Logout</a></li>
+        <%} else{%>
         <li class="<%= title == 'Login' ? 'active' : ''%>"><a title="home" href="/login">Login</a></li>
         <li class="<%= title == 'Register' ? 'active' : ''%>"><a title="home" href="/reg">Register</a></li>
-
+        <% } %>
       </ul>
 
     </div>
