@@ -5,24 +5,24 @@ var db = require('./db');
 var postSchema = new db.Schema({
     name: String,
     title: String,
-    post: String,
+    content: String,
     time: String
 });
 var postModel = db.model('Post',postSchema);
 
-function Post(name,title,post){
+function Post(name,title,content){
     this.name = name;
     this.title = title;
-    this.post = post;
+    this.content = content;
 }
 
 Post.prototype.save = function(callback){
     var date = new Date();
-    var time = date.toUTCString();
+    var time = date.toString();
     var post = {
         name: this.name,
         title: this.title,
-        post: this.post,
+        content: this.content,
         time: time
     };
     var newPost = new postModel(post);
@@ -35,6 +35,23 @@ Post.prototype.save = function(callback){
     })
 };
 Post.get = function (name, callback) {
+    if (!name){
+        postModel.find({},function(err,post){
+            if (err){
+                return callback(err);
+            }
+            callback(null, post);
+        });
+    }
+    else {
+        postModel.find({name: name}, function (err, post) {
+            if (err) {
+                return callback(err);
+            }
+            callback(null, post);
+        });
+    }
+};
 
-}
+module.exports = Post;
 

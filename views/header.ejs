@@ -3,11 +3,16 @@
   <head>
     <title>Blog</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.min.css' />
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css' />
     <link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' />
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
+    <script>
+      $('.close').click(function(){
+        $(this).parent().removeClass('in');
+      });
+    </script>
   </head>
   <body>
   <header class="nav navbar-default navbar-fixed-top">
@@ -28,13 +33,13 @@
   </header>
     <h1><%= title %></h1>
   <% if (locals.success){ %>
-    <div class="alert alert-success fade in">
+    <div id="success-alert" class="alert alert-success fade in">
       <a class="close" data-dismiss="alert" herf="#" aria-hidden="true">&times;</a>
       <%= locals.success %>
     </div>
   <% }%>
   <% if (locals.error) {%>
-    <div class="alert alert-warning fade in">
+    <div id="error-alert" class="alert alert-warning fade in">
       <a class="close" data-dismiss="alert" herf="#" aria-hidden="true">&times;</a>
       <%= locals.error%>
     </div>

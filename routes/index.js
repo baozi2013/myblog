@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var crypto = require('crypto'),
-    User = require('../models/user.js');
+    User = require('../models/user.js'),
+    Post = require('../models/post.js');
 /* GET home page. */
 /*router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -11,11 +12,17 @@ var crypto = require('crypto'),
 
 module.exports = function(app) {
   app.get('/', function (req, res) {
-    res.render('index', {
-      title: 'Home' ,
-      user: req.session.user,
-      success: req.flash('success').toString(),
-      error: req.flash('error').toString()});
+    Post.get(null, function (err, posts) {
+      console.log(posts);
+      //console.log(req.session.user)
+      res.render('index', {
+        title: 'Home',
+        user: req.session.user,
+        posts: posts,
+        success: req.flash('success').toString(),
+        error: req.flash('error').toString()
+      });
+    });
   });
   app.get('/reg',checkNotLogin);
   app.get('/reg', function (req, res) {
@@ -95,7 +102,20 @@ module.exports = function(app) {
     });
   });
   app.get('/post', function (req, res) {
-    res.render('index', { title: 'Post' });
+    res.render('post', { title: 'Post' });
+  });
+  app.post('/post', checkLogin);
+  app.post('/post', function(req, res){
+    var currentUser = req.session.user,
+        post = new Post(currentUser.name, req.body.title, req.body.content);
+    post.save(function (err) {
+      if (err){
+        req.flash('error',err);
+        return res.redirect('/');
+      }
+      req.flash('success', 'Post Successful!');
+      res.redirect('/');
+    });
   });
   app.get('/logout', function (req, res) {
     req.session.user = null;
