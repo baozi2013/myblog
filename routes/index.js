@@ -13,7 +13,7 @@ var crypto = require('crypto'),
 module.exports = function(app) {
   app.get('/', function (req, res) {
     Post.get(null, function (err, posts) {
-      console.log(posts);
+      //console.log(posts);
       //console.log(req.session.user)
       res.render('index', {
         title: 'Home',

@@ -1,7 +1,8 @@
 /**
  * Created by tianhengzhou on 8/18/15.
  */
-var db = require('./db');
+var db = require('./db'),
+    markdown = require('markdown').markdown;
 var postSchema = new db.Schema({
     name: String,
     title: String,
@@ -35,20 +36,28 @@ Post.prototype.save = function(callback){
     })
 };
 Post.get = function (name, callback) {
+    options = {sort: {time: -1}};
     if (!name){
-        postModel.find({},function(err,post){
+        postModel.find({},null,options,function(err,posts){
             if (err){
                 return callback(err);
             }
-            callback(null, post);
+            console.log(typeof posts)
+            posts.forEach(function(post){
+                post.content = markdown.toHTML(post.content)
+            });
+            callback(null, posts);
         });
     }
     else {
-        postModel.find({name: name}, function (err, post) {
+        postModel.find({name: name},null,options, function (err, posts) {
             if (err) {
                 return callback(err);
             }
-            callback(null, post);
+            posts.foreach(function(post){
+                post.content = markdown.toHTML(post.content)
+            });
+            callback(null, posts);
         });
     }
 };
