@@ -110,8 +110,14 @@ module.exports = function(app) {
   });
   app.post('/post', checkLogin);
   app.post('/post', function(req, res){
+    if (req.body.top){
+      top = 1;
+    }
+    else{
+      top = 0;
+    }
     var currentUser = req.session.user,
-        post = new Post(currentUser.name, req.body.title, req.body.content);
+        post = new Post(currentUser.name, req.body.title, req.body.content,top);
     post.save(function (err) {
       if (err){
         req.flash('error',err);
