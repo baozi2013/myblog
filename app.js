@@ -30,7 +30,7 @@ app.use(flash());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser({keepExtensions: true, uploadDir: path.join(__dirname, '/public/images')}));
+app.use(bodyParser({keepExtensions: true, uploadDir: path.join(__dirname, '/files')}));
 app.use(multipart());
 app.use(cookieParser());
 app.use(methodOverride());

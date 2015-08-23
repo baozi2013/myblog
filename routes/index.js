@@ -147,7 +147,8 @@ module.exports = function(app) {
       }
       else {
         var target_path = './public/images/' + req.files[i].name;
-        fs.renameSync(req.files[i].path, target_path); // 使用同步方式重命名一个文件
+        //console.log(target_path);
+        fs.rename(req.files[i].path, target_path); // 使用同步方式重命名一个文件
         console.log('Successfuly renamed a file!');
       }
     }
