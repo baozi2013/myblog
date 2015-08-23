@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var crypto = require('crypto'),
     User = require('../models/user.js'),
-    Post = require('../models/post.js');
+    Post = require('../models/post.js'),
+    fs = require('fs');
 /* GET home page. */
 /*router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -127,12 +128,39 @@ module.exports = function(app) {
       res.redirect('/');
     });
   });
+  app.get('/upload', checkLogin);
+  app.get('/upload', function(req,res){
+    res.render('upload', {
+      title:'upload',
+      user:req.session.user,
+      success:req.flash('success').toString(),
+      error:req.flash('error').toString()
+    });
+  });
+  app.post('/upload',checkLogin);
+  app.post('/upload', function(req,res){
+    console.log(req.files);
+    for(var i in req.files) {
+      if(req.files[i].size == 0) {
+        fs.unlinkSync(req.files[i].path); // 使用同步方式删除一个文件
+        console.log('Successfuly removed an empty file!');
+      }
+      else {
+        var target_path = './public/images/' + req.files[i].name;
+        fs.renameSync(req.files[i].path, target_path); // 使用同步方式重命名一个文件
+        console.log('Successfuly renamed a file!');
+      }
+    }
+    req.flash('success', 'The file upload succeed.');
+    res.redirect('/upload');
+  });
   app.get('/logout', function (req, res) {
     req.session.user = null;
     req.flash('success','Logout Successful!');
     res.redirect('/')
   });
 };
+
 function checkLogin(req,res,next){
   if (!req.session.user){
     req.flash('error','No login yet');

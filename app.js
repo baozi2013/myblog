@@ -11,7 +11,17 @@ var config = require('./models/config').dev;
 var settings = require('./settings');
 var app = express();
 var flash = require('connect-flash');
+var multer = require('multer');
+var methodOverride = require('method-override');
+var multipart = require('connect-multiparty');
+//var upload = multer({
+//  dest: './public/images',
+//  rename: function(fieldname, filename){
+//    return filename;
+//  }});
 // view engine setup
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(flash());
@@ -20,12 +30,22 @@ app.use(flash());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser({keepExtensions: true, uploadDir: path.join(__dirname, '/public/images')}));
+app.use(multipart());
 app.use(cookieParser());
+app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
+
 //var env = process.env.NODE_ENV =  process.env.NODE_ENV || 'dev';
 //var config = require('./models/config')[env];
 //var db = require('./models/db');
 //console.log(db)
+//app.use(upload.single('file'));
+//app.post('/upload', function(req,res){
+//  onsole.log(req.body);
+//  console.log(req.files);
+//  res.status(204).end();
+//});
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 app.use(session({
@@ -41,6 +61,7 @@ routes(app);
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
+
 /*app.use('/', routes);
 app.use('/users', users);*/
 
@@ -75,5 +96,20 @@ app.use(function(err, req, res, next) {
   });
 });
 
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
 
 module.exports = app;

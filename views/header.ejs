@@ -21,6 +21,7 @@
         <li class="<%= title == 'Home' ? 'active' : ''%>"><a title="home" href="/">Home</a></li>
         <% if (locals.user){%>
         <li class="<%= title == 'Post' ? 'active' : ''%>"><a title="post" href="/post">Post</a></li>
+        <li class="<%= title == 'Upload' ? 'active' : ''%>"><a title="upload" href="/upload">Upload</a></li>
         <li class="<%= title == 'Logout' ? 'active' : ''%>"><a title="logout" href="/logout">Logout</a></li>
         <%} else{%>
         <li class="<%= title == 'Login' ? 'active' : ''%>"><a title="home" href="/login">Login</a></li>
