@@ -131,7 +131,7 @@ module.exports = function(app) {
   app.get('/upload', checkLogin);
   app.get('/upload', function(req,res){
     res.render('upload', {
-      title:'upload',
+      title:'Upload',
       user:req.session.user,
       success:req.flash('success').toString(),
       error:req.flash('error').toString()
