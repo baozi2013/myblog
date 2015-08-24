@@ -1,0 +1,7 @@
+<%- include header %>
+<p class="info">
+    Author: <a href="/p/<%=post._id%>"><%= post.name%></a>
+    Date: <%= post.time%>
+</p>
+<p><%- post.content%></p>
+<%- include footer %>

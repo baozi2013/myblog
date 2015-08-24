@@ -1,7 +1,7 @@
 <%- include header.ejs%>
 Welcome to Home page
 <% locals.posts.forEach(function (post,index){ %>
-    <p><h2><a href="#"><%= post.title %></a></h2></p>
+    <p><h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2></p>
     <p class="info">
         Author: <a href="#"><%= post.name %></a>
         Date: <%= post.time %>

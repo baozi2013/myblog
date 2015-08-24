@@ -13,7 +13,7 @@ var crypto = require('crypto'),
 
 module.exports = function(app) {
   app.get('/', function (req, res) {
-    Post.get(null, function (err, posts) {
+    Post.getAll(null, function (err, posts) {
       //console.log(posts);
       //console.log(req.session.user)
       res.render('index', {
@@ -146,7 +146,7 @@ module.exports = function(app) {
         console.log('Successfuly removed an empty file!');
       }
       else {
-        var target_path = './public/images/' + req.files[i].name;
+        var target_path = './public/images/' + req.session.user.name;
         //console.log(target_path);
         fs.rename(req.files[i].path, target_path); // 使用同步方式重命名一个文件
         console.log('Successfuly renamed a file!');
@@ -159,6 +159,21 @@ module.exports = function(app) {
     req.session.user = null;
     req.flash('success','Logout Successful!');
     res.redirect('/')
+  });
+  app.get('/p/:_id', function(req, res){
+    Post.getOne(req.params._id, function(err, post){
+      if (err){
+        req.flash('error', err);
+        return res.redirect('/');
+      }
+      res.render('article',{
+        title: post.title,
+        post: post,
+        user: req.session.user,
+        success:req.flash('success').toString(),
+        error: req.flash('error').toString()
+      });
+    });
   });
 };
 

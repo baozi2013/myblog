@@ -41,7 +41,7 @@ Post.prototype.save = function(callback){
         callback(null, post);
     })
 };
-Post.get = function (name, callback) {
+Post.getAll = function (name, callback) {
     options = {
         sort: {
             top: -1,
@@ -52,7 +52,7 @@ Post.get = function (name, callback) {
             if (err){
                 return callback(err);
             }
-            console.log(typeof posts)
+            console.log(typeof posts);
             posts.forEach(function(post){
                 post.content = markdown.toHTML(post.content)
             });
@@ -71,6 +71,15 @@ Post.get = function (name, callback) {
         });
     }
 };
+Post.getOne = function(_id, callback){
+    postModel.findById(_id, function(err,post){
+        if (err){
+            return callback(err);
+        }
+        post.content = markdown.toHTML(post.content);
+        callback(null,post);
+    })
+}
 
 module.exports = Post;
 
