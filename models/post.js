@@ -79,6 +79,25 @@ Post.getOne = function(_id, callback){
         post.content = markdown.toHTML(post.content);
         callback(null,post);
     })
+};
+
+Post.edit = function(_id, post, callback){
+    postModel.findOneAndUpdate({_id: _id}, post,function(err,post){
+        if (err){
+            return callback(err);
+        }
+        post.content = markdown.toHTML(post.content);
+        callback(null,post);
+    })
+};
+
+Post.remove = function(_id, callback){
+    postModel.findOneAndRemove({_id: _id},function(err, post){
+        if (err){
+            return callback(err);
+        }
+        callback(null,post);
+    })
 }
 
 module.exports = Post;

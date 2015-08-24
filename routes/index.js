@@ -175,6 +175,41 @@ module.exports = function(app) {
       });
     });
   });
+  app.get('/edit/:_id',checkLogin);
+  app.get('/edit/:_id', function(req,res){
+    Post.edit(req.params._id,function(err, post){
+      if (err){
+        req.flash("error", 'This blog does not exist');
+        return res.redirect('/');
+      }
+      res.render('edit',{
+        title: post.title,
+        user: req.session.user,
+        post: post,
+        success:req.flash('success').toString(),
+        error:req.flash('error').toString()
+      });
+    });
+  });
+  app.post('/edit/:_id',checkLogin);
+  app.post('/edit/:_id', function(req,res){
+    if (req.body.top){
+      top = 1;
+    }
+    else{
+      top = 0;
+    }
+    var newpost = new Post(req.session.user,req.body.title,req.body.content,top);
+    Post.edit(req.params._id,newpost,function(err,post){
+      var url = encodeURI('/p/'+post._id)
+      if (err){
+        req.flash('error',err.toString());
+        return res.redirect('/');
+        req.flash('success','Update Succeed.')
+        res.redirect(url);
+      }
+    })
+  })
 };
 
 function checkLogin(req,res,next){
