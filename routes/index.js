@@ -112,7 +112,7 @@ module.exports = function(app) {
   app.post('/post', checkLogin);
   app.post('/post', function(req, res){
     if (req.body.top){
-      top = 1;
+      var top = 1;
     }
     else{
       top = 0;
@@ -177,7 +177,7 @@ module.exports = function(app) {
   });
   app.get('/edit/:_id',checkLogin);
   app.get('/edit/:_id', function(req,res){
-    Post.edit(req.params._id,function(err, post){
+    Post.edit(req.params._id, function(err, post){
       if (err){
         req.flash("error", 'This blog does not exist');
         return res.redirect('/');
@@ -194,19 +194,32 @@ module.exports = function(app) {
   app.post('/edit/:_id',checkLogin);
   app.post('/edit/:_id', function(req,res){
     if (req.body.top){
-      top = 1;
+      var top = 1;
     }
     else{
       top = 0;
     }
-    var newpost = new Post(req.session.user,req.body.title,req.body.content,top);
-    Post.edit(req.params._id,newpost,function(err,post){
-      var url = encodeURI('/p/'+post._id)
+    var newpost = new Post(req.session.user.name,req.body.title,req.body.content,top);
+    Post.update(req.params._id,newpost,function(err,post){
+      var url = encodeURI('/p/'+post._id);
       if (err){
         req.flash('error',err.toString());
-        return res.redirect('/');
-        req.flash('success','Update Succeed.')
+        return res.redirect('/');}
+      else{
+        req.flash('success','Update Succeed.');
         res.redirect(url);
+      }
+    })
+  });
+  app.get('/remove/:_id', function(req,res){
+    Post.remove(req.params._id,function(err,post){
+      if (err){
+        req.flash('error', err.toString());
+        return res.redirect('/');
+      }
+      else{
+        req.flash('success', 'Remove Succeed');
+        res.redirect('/');
       }
     })
   })
