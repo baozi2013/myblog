@@ -30,7 +30,8 @@ Post.prototype.save = function(callback){
         content: this.content,
         time: time,
         time_for_sort: time_for_sort,
-        top: this.top
+        top: this.top,
+        comments: []
     };
     var newPost = new postModel(post);
 
@@ -77,6 +78,9 @@ Post.getOne = function(_id, callback){
             return callback(err);
         }
         post.content = markdown.toHTML(post.content);
+        post.comments.forEach(function(comment){
+           comment.content = markdown.toHTML(comment.content);
+        });
         callback(null,post);
     })
 };
