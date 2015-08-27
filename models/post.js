@@ -78,9 +78,7 @@ Post.getOne = function(_id, callback){
             return callback(err);
         }
         post.content = markdown.toHTML(post.content);
-        post.comments.forEach(function(comment){
-           comment.content = markdown.toHTML(comment.content);
-        });
+
         callback(null,post);
     })
 };
