@@ -4,11 +4,13 @@
     Date: <%= post.time%>
 </p>
 <p><%- post.content%></p>
+<% if (locals.user) {%>
 <% if (locals.user.name == post.name){ %>
 <div>
     <a href="/edit/<%= post._id%>" class="btn btn-default">Edit</a>
     <a href="/remove/<%= post._id%>" class="btn btn-default">Remove</a>
 </div>
+<% } %>
 <% } %>
 <%- include comment %>
 <%- include footer %>
