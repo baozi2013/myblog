@@ -7,7 +7,7 @@
     <% if (locals.user.name == 'zth198814'){ %>
     <div class="form-group">
         <div class="radio">
-            <label for="top"><input type="radio" name="top"/>Feature Post</label>
+            <label for="top"><input type="radio" name="top" <% if (post.top == 1){%> checked<%}%>/>Feature Post</label>
         </div>
     </div>
     <% } %>
