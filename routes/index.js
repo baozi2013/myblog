@@ -222,7 +222,13 @@ module.exports = function(app) {
         res.redirect('/');
       }
     })
-  })
+  });
+  app.get('/data',function(req,res){
+    Post.getAll(null, function (err, posts) {
+      //console.log(posts);
+      //console.log(req.session.user)
+      res.json(posts);})
+  });
 };
 
 function checkLogin(req,res,next){

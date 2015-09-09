@@ -11,5 +11,13 @@
             (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
         }());
     </script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('customersCtrl', function($scope, $http) {
+            $http.get('/data').success(function (data) {
+                $scope.posts = data
+            });
+        })
+    </script>
   </body>
 </html>

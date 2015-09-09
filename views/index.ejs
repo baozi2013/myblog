@@ -8,4 +8,14 @@ Welcome to Home page
     </p>
     <p><%- post.content %></p>
 <% })%>
+<div ng-app="myApp" ng-controller="customersCtrl">
+
+    <ul>
+        <li ng-repeat="post in posts">
+            {{ post.title + ', ' + post.content }}
+        </li>
+    </ul>
+
+</div>
+
 <%- include footer.ejs%>
