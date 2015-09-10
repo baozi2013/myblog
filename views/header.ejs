@@ -3,11 +3,12 @@
   <head>
     <title>Blog</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css' />
     <link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' />
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/js/dirPagination.js"></script>
     <script src="/js/script.js"></script>
     <script>
       $('.close').click(function(){
@@ -20,6 +21,7 @@
     <div class="container">
       <ul class="nav navbar-nav">
         <li class="<%= title == 'Home' ? 'active' : ''%>"><a title="home" href="/">Home</a></li>
+        <li class="<%= title == 'Archive' ? 'active' : ''%>"><a title="archive" href="/archive">Archive</a></li>
         <% if (locals.user){%>
         <li class="<%= title == 'Post' ? 'active' : ''%>"><a title="post" href="/post">Post</a></li>
         <li class="<%= title == 'Upload' ? 'active' : ''%>"><a title="upload" href="/upload">Upload</a></li>

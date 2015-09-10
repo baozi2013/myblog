@@ -1,0 +1,49 @@
+<%- include header %>
+<div ng-app="myApp">
+    <div ng-controller="categoriesCtrl">
+    <ul>
+        <li ng-repeat="category in categories">
+            {{ category }}
+        </li>
+    </ul>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div ng-controller="customersCtrl">
+                    <h2>All Posts</h2>
+
+                    <div class="row ">
+                        <div class="col-sm-4">
+                            <label for="search">Search:</label>
+                            <input type="text" ng-model="query" id="search" class="form-control" placeholder="Search text"/>
+                        </div>
+                        <div class="col-sm-offset-2 col-sm-4">
+                            <label for="search">items per page:</label>
+                            <input type="number" min="1" max="100" class="form-control" ng-model="pageSize"/>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <ul class="list-unstyled">
+                                        <li dir-paginate="post in posts | filter:query | itemsPerPage: pageSize" current-page="currentPage">
+                                            <h4>{{post.title}}</h4>
+                                            <p>{{post.content}}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <dir-pagination-controls boundary-links="true" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include footer %>

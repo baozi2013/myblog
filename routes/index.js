@@ -13,7 +13,7 @@ var crypto = require('crypto'),
 
 module.exports = function(app) {
   app.get('/', function (req, res) {
-    Post.getAll(null, function (err, posts) {
+    Post.getTen(function (err, posts) {
       //console.log(posts);
       //console.log(req.session.user)
       res.render('index', {
@@ -228,13 +228,20 @@ module.exports = function(app) {
     Post.getAll(null, function (err, posts) {
       //console.log(posts);
       //console.log(req.session.user)
-      res.json(posts);})
+      res.send(posts);})
   });
   app.get('/categories',function(req,res){
     Post.getcategories(function(err,categories){
       res.json(categories);
     })
   })
+  app.get('/archive', function (req, res) {
+    res.render('archive', {
+      title: 'Archive' ,
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error:req.flash('error').toString()});
+  });
 };
 
 function checkLogin(req,res,next){

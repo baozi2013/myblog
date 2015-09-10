@@ -9,6 +9,15 @@
         <div class="radio">
             <label for="top"><input type="radio" name="top" <% if (post.top == 1){%> checked<%}%>/>Feature Post</label>
         </div>
+        <label for="category">Categories: </label>
+        <select name="category" id="categories">
+            <option value="angualar" <% if (post.category == 'angular'){%> selected <%}%>>Angular.js</option>
+            <option value="frontend" <% if (post.category == 'frontend'){%> selected <%}%>>Front End</option>
+            <option value="mongodb" <% if (post.category == 'mongodb'){%> selected <%}%>>MongoDB</option>
+            <option value="node" <% if (post.category == 'node'){%> selected <%}%>>Node.js</option>
+            <option value="express" <% if (post.category == 'express'){%> selected <%}%>>Express.js</option>
+            <option value="misc" <% if (post.category == 'misc'){%> selected <%}%>>Misc</option>
+        </select>
     </div>
     <% } %>
     <div class="form-group">

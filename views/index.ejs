@@ -2,20 +2,11 @@
 Welcome to Home page
 <% locals.posts.forEach(function (post,index){ %>
     <p><h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2></p>
+    <span class="label label-danger"><%= post.category%></span>
     <p class="info">
         Author: <a href="#"><%= post.name %></a>
         Date: <%= post.time %>
     </p>
     <p><%- post.content %></p>
 <% })%>
-<div ng-app="myApp" ng-controller="customersCtrl">
-
-    <ul>
-        <li ng-repeat="post in posts">
-            {{ post.title + ', ' + post.content }}
-        </li>
-    </ul>
-
-</div>
-
 <%- include footer.ejs%>

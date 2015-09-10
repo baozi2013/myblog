@@ -59,10 +59,6 @@ Post.getAll = function (name, callback) {
             if (err){
                 return callback(err);
             }
-            console.log(typeof posts);
-            posts.forEach(function(post){
-                post.content = markdown.toHTML(post.content)
-            });
             callback(null, posts);
         });
     }
@@ -128,6 +124,25 @@ Post.getcategories = function(callback){
         }
         callback(null, categories);
     })
+};
+
+Post.getTen = function (callback) {
+    options = {
+        sort: {
+            top: -1,
+            time_for_sort: -1,
+        },
+        limit: 10
+    };
+    postModel.find({},null,options,function(err,posts){
+            if (err){
+                return callback(err);
+            }
+            posts.forEach(function(post){
+                post.content = markdown.toHTML(post.content)
+            });
+            callback(null, posts);
+        });
 };
 module.exports = Post;
 
