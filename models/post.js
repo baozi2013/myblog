@@ -3,21 +3,25 @@
  */
 var db = require('./db'),
     markdown = require('markdown').markdown;
+
 var postSchema = new db.Schema({
     name: String,
     title: String,
     content: String,
     time: String,
     time_for_sort: Number,
-    top: Number
+    top: Number,
+    category: String
 });
+
 var postModel = db.model('Post',postSchema);
 
-function Post(name,title,content,top){
+function Post(name,title,content,top,category){
     this.name = name;
     this.title = title;
     this.content = content;
     this.top = top;
+    this.category = category;
 }
 
 Post.prototype.save = function(callback){
@@ -31,7 +35,8 @@ Post.prototype.save = function(callback){
         time: time,
         time_for_sort: time_for_sort,
         top: this.top,
-        comments: []
+        comments: [],
+        category: this.category
     };
     var newPost = new postModel(post);
 
@@ -42,6 +47,7 @@ Post.prototype.save = function(callback){
         callback(null, post);
     })
 };
+
 Post.getAll = function (name, callback) {
     options = {
         sort: {
@@ -72,6 +78,7 @@ Post.getAll = function (name, callback) {
         });
     }
 };
+
 Post.getOne = function(_id, callback){
     postModel.findById(_id, function(err,post){
         if (err){
@@ -82,6 +89,7 @@ Post.getOne = function(_id, callback){
         callback(null,post);
     })
 };
+
 Post.edit = function(_id, callback){
   postModel.findOne({_id: _id},function(err,post){
       if(err){
@@ -90,6 +98,7 @@ Post.edit = function(_id, callback){
       callback(null,post);
   })
 };
+
 Post.update = function(_id, newpost, callback){
     var date = new Date();
     newpost.time = date.toString();
@@ -110,7 +119,15 @@ Post.remove = function(_id, callback){
         }
         callback(null,post);
     })
-}
+};
 
+Post.getcategories = function(callback){
+    postModel.find().distinct("category", function(err, categories){
+        if (err){
+            return callback(err);
+        }
+        callback(null, categories);
+    })
+};
 module.exports = Post;
 

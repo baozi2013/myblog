@@ -118,7 +118,8 @@ module.exports = function(app) {
       top = 0;
     }
     var currentUser = req.session.user,
-        post = new Post(currentUser.name, req.body.title, req.body.content,top);
+        category = req.body.category
+        post = new Post(currentUser.name, req.body.title, req.body.content,top,category);
     post.save(function (err) {
       if (err){
         req.flash('error',err);
@@ -229,6 +230,11 @@ module.exports = function(app) {
       //console.log(req.session.user)
       res.json(posts);})
   });
+  app.get('/categories',function(req,res){
+    Post.getcategories(function(err,categories){
+      res.json(categories);
+    })
+  })
 };
 
 function checkLogin(req,res,next){

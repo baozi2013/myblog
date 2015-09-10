@@ -1,0 +1,11 @@
+<%- include header %>
+<div ng-app="myApp" ng-controller="customersCtrl">
+
+    <ul>
+        <li ng-repeat="post in posts">
+            {{ post.title + ', ' + post.content }}
+        </li>
+    </ul>
+
+</div>
+<%- include footer %>
