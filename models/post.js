@@ -85,7 +85,14 @@ Post.getOne = function(_id, callback){
         callback(null,post);
     })
 };
-
+Post.getOnecategory = function(category, callback){
+    postModel.find({category: category}, function(err,post){
+        if (err){
+            return callback(err);
+        }
+        callback(null,post);
+    })
+};
 Post.edit = function(_id, callback){
   postModel.findOne({_id: _id},function(err,post){
       if(err){

@@ -8,15 +8,11 @@ app.controller('customersCtrl', function($scope, $http) {
     $http.get('/data').success(function (data) {
         $scope.posts = data
     });
-})
-app.controller('categoriesCtrl', function ($scope, $http) {
     $http.get('/categories').success(function (data) {
         $scope.categories = data
     });
+    $scope.categoryquery = function(category){
+        $scope.categoryq = category;
+    }
 });
-function OtherController($scope) {
-    $scope.pageChangeHandler = function(num) {
-        console.log('going to page ' + num);
-    };
-}
-app.controller('OtherController', OtherController);
+

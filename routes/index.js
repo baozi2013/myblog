@@ -234,7 +234,7 @@ module.exports = function(app) {
     Post.getcategories(function(err,categories){
       res.json(categories);
     })
-  })
+  });
   app.get('/archive', function (req, res) {
     res.render('archive', {
       title: 'Archive' ,
