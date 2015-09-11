@@ -2,6 +2,7 @@
 <p class="info">
     Author: <a href="/p/<%=post._id%>"><%= post.name%></a>
     Date: <%= post.time%>
+    <span class="label label-danger"><%= post.category%></span>
 </p>
 <p><%- post.content%></p>
 <% if (locals.user) {%>

@@ -200,7 +200,7 @@ module.exports = function(app) {
     else{
       top = 0;
     }
-    var newpost = new Post(req.session.user.name,req.body.title,req.body.content,top);
+    var newpost = new Post(req.session.user.name,req.body.title,req.body.content,top,req.body.category);
     Post.update(req.params._id,newpost,function(err,post){
       var url = encodeURI('/p/'+post._id);
       if (err){
