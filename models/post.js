@@ -1,8 +1,7 @@
 /**
  * Created by tianhengzhou on 8/18/15.
  */
-var db = require('./db'),
-    markdown = require('markdown').markdown;
+var db = require('./db');
 
 var postSchema = new db.Schema({
     name: String,
@@ -67,9 +66,6 @@ Post.getAll = function (name, callback) {
             if (err) {
                 return callback(err);
             }
-            posts.foreach(function(post){
-                post.content = markdown.toHTML(post.content)
-            });
             callback(null, posts);
         });
     }
@@ -80,8 +76,6 @@ Post.getOne = function(_id, callback){
         if (err){
             return callback(err);
         }
-        post.content = markdown.toHTML(post.content);
-
         callback(null,post);
     })
 };
@@ -110,7 +104,6 @@ Post.update = function(_id, newpost, callback){
         if (err){
             return callback(err);
         }
-        post.content = markdown.toHTML(post.content);
         callback(null,post);
     })
 };
@@ -145,9 +138,6 @@ Post.getTen = function (callback) {
             if (err){
                 return callback(err);
             }
-            posts.forEach(function(post){
-                post.content = markdown.toHTML(post.content)
-            });
             callback(null, posts);
         });
 };
