@@ -25,7 +25,13 @@ function Post(name,title,content,top,category){
 
 Post.prototype.save = function(callback){
     var date = new Date();
-    var time = date.toString();
+    var m_names = new Array("January", "February", "March",
+        "April", "May", "June", "July", "August", "September",
+        "October", "November", "December");
+    var curr_date = date.getDate(),
+        curr_month = date.getMonth(),
+        curr_year = date.getFullYear();
+    var time = curr_date + ' ' + m_names[curr_month] + ' '+ curr_year;
     var time_for_sort = Date.now();
     var post = {
         name: this.name,
@@ -98,7 +104,14 @@ Post.edit = function(_id, callback){
 
 Post.update = function(_id, newpost, callback){
     var date = new Date();
-    newpost.time = date.toString();
+    var m_names = new Array("January", "February", "March",
+        "April", "May", "June", "July", "August", "September",
+        "October", "November", "December");
+    var curr_date = date.getDate(),
+        curr_month = date.getMonth(),
+        curr_year = date.getFullYear();
+    var time = curr_date + ' ' + m_names[curr_month] + ' '+ curr_year;
+    newpost.time = time;
     newpost.time_for_sort = Date.now();
     postModel.findOneAndUpdate({_id: _id}, newpost,function(err,post){
         if (err){
@@ -132,7 +145,7 @@ Post.getTen = function (callback) {
             top: -1,
             time_for_sort: -1,
         },
-        limit: 10
+        limit: 5
     };
     postModel.find({},null,options,function(err,posts){
             if (err){

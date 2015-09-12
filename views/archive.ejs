@@ -37,9 +37,10 @@
                                 <div class="panel-heading">All Posts</div>
                                 <div class="panel-body">
                                     <ul class="list-unstyled">
-                                        <li dir-paginate="post in posts | filter:{title: query} | filter:{category: categoryq} | itemsPerPage: pageSize" current-page="currentPage" class="post">
-                                            <h4 class="title">{{post.title}}</h4>
+                                        <li dir-paginate="post in posts | filter:{title: query} | filter:{category: categoryq} | itemsPerPage: pageSize | orderBy: '-time_for_sort'" current-page="currentPage" class="post">
+                                            <h4 class="title"><a href="/p/{{post._id}}"> {{post.title}}</a></h4>
                                             <span class="label label-danger categoryLabel">{{post.category}}</span>
+                                            <div class="date">{{post.time}}</div>
                                         </li>
                                     </ul>
                                 </div>
@@ -48,11 +49,8 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>

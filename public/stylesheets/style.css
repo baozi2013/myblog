@@ -6,22 +6,22 @@ body {
 a {
   color: #00B7FF;
 }
+a:hover {
+  text-decoration: none !important;
+}
 .info {
   margin-top: 5px;
-}
-.info a:hover {
-  text-decoration: none;
 }
 a.btn {
   margin-top: 0.3em;
   margin-bottom: 0.3em;
 }
 .category {
-  margin-top: 1em;
+  margin-top: 0.8em;
 }
 .post{
   border-bottom: grey 1px dotted;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.2em;
 }
 .categoryLabel{
   display: inline-block;
@@ -31,4 +31,11 @@ a.btn {
 }
 .title{
   display: inline-block;
+}
+.date{
+  float: right;
+  display: inline-block;
+  position: relative;
+  bottom: -0.75em;
+
 }
