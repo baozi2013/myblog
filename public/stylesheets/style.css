@@ -19,3 +19,16 @@ a.btn {
 .category {
   margin-top: 1em;
 }
+.post{
+  border-bottom: grey 1px dotted;
+  padding-bottom: 0.5em;
+}
+.categoryLabel{
+  display: inline-block;
+  position: relative;
+  top: -0.3em;
+  left: 0.3em;
+}
+.title{
+  display: inline-block;
+}

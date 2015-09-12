@@ -5,9 +5,9 @@
             <div class="col-sm-12">
                 <div ng-controller="customersCtrl">
                     <div class="row ">
-                        <div class="col-sm-3 ">
+                        <div class="col-sm-3">
                             <div class="col-sm-12">
-                                <label for="search">Search Content:</label>
+                                <label for="search">Search Title:</label>
                                 <input type="text" ng-model="query" id="search" class="form-control" placeholder="Search text"/>
                             </div>
                             <div class="col-sm-12">
@@ -18,7 +18,7 @@
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">Categories</div>
                                     <div class="panel-body">
-                                        <div class="col-sm-offset-1 col-sm-12">
+                                        <div class="col-sm-12">
                                             <ul class="list-unstyled">
                                                 <li>
                                                     <a ng-click="categoryquery('')" class="btn btn-link">All</a>
@@ -37,10 +37,9 @@
                                 <div class="panel-heading">All Posts</div>
                                 <div class="panel-body">
                                     <ul class="list-unstyled">
-                                        <li dir-paginate="post in posts | filter:{content:query} | filter:{category: categoryq} | itemsPerPage: pageSize" current-page="currentPage">
-                                            <h4>{{post.title}}</h4>
-                                            <span class="label label-danger">{{post.category}}</span>
-                                            <p>{{post.content | limitTo: 10}}...</p>
+                                        <li dir-paginate="post in posts | filter:{title: query} | filter:{category: categoryq} | itemsPerPage: pageSize" current-page="currentPage" class="post">
+                                            <h4 class="title">{{post.title}}</h4>
+                                            <span class="label label-danger categoryLabel">{{post.category}}</span>
                                         </li>
                                     </ul>
                                 </div>

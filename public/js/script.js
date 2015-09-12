@@ -13,6 +13,7 @@ app.controller('customersCtrl', function($scope, $http) {
     });
     $scope.categoryquery = function(category){
         $scope.categoryq = category;
-    }
+    };
 });
+
 
