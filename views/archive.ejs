@@ -34,11 +34,15 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="panel panel-primary">
-                                <div class="panel-heading">All Posts</div>
+                                <div class="panel-heading">All Posts
+                                    <a class="btn btn-primary btn-sm" ng-click="sortType = 'pv'; sortReverse_pv = !sortReverse_pv">PV<i ng-show="!sortReverse_pv" class="fa fa-caret-down"></i><i ng-show="sortReverse_pv" class="fa fa-caret-up"></i></a>
+
+                                    <a class="btn btn-primary btn-sm" ng-click="sortType = 'time_for_sort'; sortReverse_time = !sortReverse_time">Time<i ng-show="!sortReverse_time" class="fa fa-caret-down"></i><i ng-show="sortReverse_time" class="fa fa-caret-up"></i></a>
+                                </div>
                                 <div class="panel-body">
                                     <ul class="list-unstyled">
-                                        <li dir-paginate="post in posts | filter:{title: query} | filter:{category: categoryq} | itemsPerPage: pageSize | orderBy: '-time_for_sort'" current-page="currentPage" class="post">
-                                            <i ng-if="post.top" class="fa fa-heart"></i><h4 class="title"><a href="/p/{{post._id}}">{{post.title}}</a></h4>
+                                        <li dir-paginate="post in posts | filter:{title: query} | filter:{category: categoryq} | itemsPerPage: pageSize | orderBy: sortType:sortReverse_pv || sortReverse_time" current-page="currentPage" class="post">
+                                            <i ng-if="post.top" class="fa fa-heart"></i><h4 class="title"><a href="/p/{{post._id}}">{{post.title | limitTo: 20}}</a></h4>
                                             <span class="label label-danger categoryLabel">{{post.category}}</span>
                                             <div class="date">{{post.time}} </div>
                                             <div class="pv">PV: {{post.pv}} |</div>

@@ -26,9 +26,9 @@ function Post(name,title,content,top,category){
 
 Post.prototype.save = function(callback){
     var date = new Date();
-    var m_names = new Array("January", "February", "March",
-        "April", "May", "June", "July", "August", "September",
-        "October", "November", "December");
+    var m_names = new Array("Jan", "Feb", "Mar",
+        "Apr", "May", "Jun", "Jul", "Aug", "Sep",
+        "Oct", "Nov", "Dec");
     var curr_date = date.getDate(),
         curr_month = date.getMonth(),
         curr_year = date.getFullYear();
@@ -106,9 +106,9 @@ Post.edit = function(_id, callback){
 
 Post.update = function(_id, newpost, callback){
     var date = new Date();
-    var m_names = new Array("January", "February", "March",
-        "April", "May", "June", "July", "August", "September",
-        "October", "November", "December");
+    var m_names = new Array("Jan", "Feb", "Mar",
+        "Apr", "May", "Jun", "Jul", "Aug", "Sep",
+        "Oct", "Nov", "Dec");
     var curr_date = date.getDate(),
         curr_month = date.getMonth(),
         curr_year = date.getFullYear();
