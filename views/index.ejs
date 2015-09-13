@@ -1,8 +1,8 @@
 <%- include header.ejs%>
-Welcome to Home page
+Welcome to THZLAB
 <% locals.posts.forEach(function (post,index){ %>
     <p><h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2></p>
-    <span class="label label-danger"><%= post.category%></span>
+    <p>Comments: <span class="fb-comments-count" data-href="http://techbow.net:3000/p/<%= post._id%>"></span> Page View: <%= post.pv%> <span class="label label-danger"><%= post.category%></span></p>
     <p class="info">
         Author: <a href="#"><%= post.name %></a>
         Date: <%= post.time %>

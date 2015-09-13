@@ -38,9 +38,10 @@
                                 <div class="panel-body">
                                     <ul class="list-unstyled">
                                         <li dir-paginate="post in posts | filter:{title: query} | filter:{category: categoryq} | itemsPerPage: pageSize | orderBy: '-time_for_sort'" current-page="currentPage" class="post">
-                                            <h4 class="title"><a href="/p/{{post._id}}"> {{post.title}}</a></h4>
+                                            <i ng-if="post.top" class="fa fa-heart"></i><h4 class="title"><a href="/p/{{post._id}}">{{post.title}}</a></h4>
                                             <span class="label label-danger categoryLabel">{{post.category}}</span>
-                                            <div class="date">{{post.time}}</div>
+                                            <div class="date">{{post.time}} </div>
+                                            <div class="pv">PV: {{post.pv}} |</div>
                                         </li>
                                     </ul>
                                 </div>
@@ -54,5 +55,5 @@
             </div>
         </div>
     </div>
-
+</div>
 <%- include footer %>

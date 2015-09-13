@@ -1,18 +1,38 @@
-    </div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES * * */
-        var disqus_shortname = 'thzlab';
+</div>
+    <!--<script type="text/javascript">-->
+        <!--/* * * CONFIGURATION VARIABLES * * */-->
+        <!--var disqus_shortname = 'thzlab';-->
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script'); s.async = true;
-            s.type = 'text/javascript';
-            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
-    </script>
+        <!--/* * * DON'T EDIT BELOW THIS LINE * * */-->
+        <!--(function () {-->
+            <!--var s = document.createElement('script'); s.async = true;-->
+            <!--s.type = 'text/javascript';-->
+<!--//            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';-->
+            <!--s.src = '/js/count.js';-->
+            <!--(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);-->
+        <!--}());-->
+    <!--</script>-->
+    <div id="fb-root"></div>
     <script>
-
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
     </script>
+    <!--<script>-->
+        <!--$(function () {-->
+            <!--var url = 'http://techbow.net:3000/p/55dcf3c94a2ca49a8d9310de' // Replace this variable value with the link-->
+            <!--$.getJSON('http://graph.facebook.com/?id=' + url, function (data) {-->
+                <!--if (data.comments) { //If their is no comments on the page then comments data will not exist-->
+                    <!--$('.comment-count').append(data.comments);-->
+                <!--} else {-->
+                    <!--$('.comment-count').append('No Comments');-->
+                <!--}-->
+            <!--});-->
+        <!--});-->
+    <!--</script>-->
   </body>
 </html>

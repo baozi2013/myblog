@@ -17,7 +17,7 @@ module.exports = function(app) {
       //console.log(posts);
       //console.log(req.session.user)
       res.render('index', {
-        title: 'Home',
+        title: 'THZLAB',
         user: req.session.user,
         posts: posts,
         success: req.flash('success').toString(),

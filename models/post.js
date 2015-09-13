@@ -10,7 +10,8 @@ var postSchema = new db.Schema({
     time: String,
     time_for_sort: Number,
     top: Number,
-    category: String
+    category: String,
+    pv: Number
 });
 
 var postModel = db.model('Post',postSchema);
@@ -41,7 +42,8 @@ Post.prototype.save = function(callback){
         time_for_sort: time_for_sort,
         top: this.top,
         comments: [],
-        category: this.category
+        category: this.category,
+        pv: 0
     };
     var newPost = new postModel(post);
 
@@ -78,7 +80,7 @@ Post.getAll = function (name, callback) {
 };
 
 Post.getOne = function(_id, callback){
-    postModel.findById(_id, function(err,post){
+    postModel.findOneAndUpdate({_id: _id}, {$inc: {pv: 1}}, function(err,post){
         if (err){
             return callback(err);
         }
