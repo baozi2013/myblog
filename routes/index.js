@@ -242,6 +242,9 @@ module.exports = function(app) {
       success: req.flash('success').toString(),
       error:req.flash('error').toString()});
   });
+  app.use(function (req, res) {
+    res.render("404");
+  });
 };
 
 function checkLogin(req,res,next){
