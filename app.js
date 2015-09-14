@@ -10,6 +10,8 @@ var user = require('./models/user');
 var config = require('./models/config').dev;
 var settings = require('./settings');
 var app = express();
+var passport = require('passport')
+    , GithubStrategy = require('passport-github').Strategy;
 var flash = require('connect-flash');
 var multer = require('multer');
 var methodOverride = require('method-override');
@@ -61,7 +63,14 @@ routes(app);
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
-
+app.use(passport.initialize());
+passport.use(new GithubStrategy({
+  clientID: "9a5368a8000005fd0d21",
+  clientSecret: "5a45aca590ddfb74674a439d9e71c52ab0a1973f",
+  callbackURL: "http://localhost:3000/login/github/callback"
+}, function(accessToken, refreshToken, profile, done) {
+  done(null, profile);
+}));
 /*app.use('/', routes);
 app.use('/users', users);*/
 

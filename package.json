@@ -27,6 +27,9 @@
     "morgan": "~1.6.1",
     "multer": "^1.0.3",
     "multipart": "^0.1.5",
-    "serve-favicon": "~2.3.0"
+    "passport": "^0.3.0",
+    "serve-favicon": "~2.3.0",
+    "passport": "*",
+    "passport-github": "*"
   }
 }

@@ -4,11 +4,9 @@ Welcome to THZLAB
     <p><h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2></p>
     <p>Comments: <span class="fb-comments-count" data-href="http://techbow.net:3000/p/<%= post._id%>"></span> Page View: <%= post.pv%> <span class="label label-danger"><%= post.category%></span></p>
     <p class="info">
-        Author: <a href="#"><%= post.name %></a>
+        Author: <a href="/u/<%= post.name%>"><%= post.name %></a>
         Date: <%= post.time %>
     </p>
     <p><%- post.content %></p>
 <% })%>
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
 <%- include footer.ejs%>

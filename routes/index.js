@@ -1,4 +1,5 @@
 var express = require('express');
+var passport = require('passport');
 var router = express.Router();
 var crypto = require('crypto'),
     User = require('../models/user.js'),
@@ -241,6 +242,31 @@ module.exports = function(app) {
       user: req.session.user,
       success: req.flash('success').toString(),
       error:req.flash('error').toString()});
+  });
+
+  app.get('/u/:username', function(req,res){
+    Post.getAll(req.params.username,function(err,posts){
+      if (err) {
+        req.flash('error', err);
+        return res.redirect('/');
+      }
+      res.render('user', {
+        title: req.params.username,
+        posts: posts,
+        user : req.session.user,
+        success : req.flash('success').toString(),
+        error : req.flash('error').toString()
+      });
+    });
+  });
+  app.get("/login/github", passport.authenticate("github", {session: false}));
+  app.get("/login/github/callback", passport.authenticate("github", {
+    session: false,
+    failureRedirect: '/login',
+    successFlash: 'Login Succeed！'
+  }), function (req, res) {
+    req.session.user = {name: req.user.username, head: "https://gravatar.com/avatar/" + req.user._json.gravatar_id + "?s=48"};
+    res.redirect('/');
   });
   app.use(function (req, res) {
     res.render("404");

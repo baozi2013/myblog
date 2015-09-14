@@ -36,6 +36,8 @@
         <li class="<%= title == 'Login' ? 'active' : ''%>"><a title="login" href="/login">Login</a></li>
         <li class="<%= title == 'Register' ? 'active' : ''%>"><a title="register" href="/reg">Register</a></li>
         <% } %>
+        <li class="facebook-login"><fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button></li>
       </ul>
 
     </div>
