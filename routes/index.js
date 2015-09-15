@@ -265,9 +265,21 @@ module.exports = function(app) {
     failureRedirect: '/login',
     successFlash: 'Login Succeed！'
   }), function (req, res) {
+    console.log(req.user);
     req.session.user = {name: req.user.username, head: "https://gravatar.com/avatar/" + req.user._json.gravatar_id + "?s=48"};
     res.redirect('/');
   });
+  app.get('/login/facebook', passport.authenticate('facebook'));
+  app.get('/login/facebook/callback',
+      passport.authenticate('facebook', {
+        session: false,
+        successFlash: 'Login Succeed! ',
+        failureRedirect: '/login'
+      }), function (req,res){
+        console.log(req.user);
+        req.session.user = {name: req.user.displayName, head: "https://gravatar.com/avatar/" + req.user._json.gravatar_id + "?s=48"};
+        res.redirect('/');
+      });
   app.use(function (req, res) {
     res.render("404");
   });

@@ -11,7 +11,8 @@ var config = require('./models/config').dev;
 var settings = require('./settings');
 var app = express();
 var passport = require('passport')
-    , GithubStrategy = require('passport-github').Strategy;
+    , GithubStrategy = require('passport-github').Strategy
+    ,FacebookStrategy = require('passport-facebook').Strategy;
 var flash = require('connect-flash');
 var multer = require('multer');
 var methodOverride = require('method-override');
@@ -71,6 +72,14 @@ passport.use(new GithubStrategy({
 }, function(accessToken, refreshToken, profile, done) {
   done(null, profile);
 }));
+passport.use(new FacebookStrategy({
+      clientID: "1494170534213878",
+      clientSecret: "c56930b333373e322e21af88945b1c0b",
+      callbackURL: "http://localhost:3000/login/facebook/callback"
+    },
+    function(accessToken, refreshToken, profile, done) {
+      return done(null, profile);
+    }));
 /*app.use('/', routes);
 app.use('/users', users);*/
 

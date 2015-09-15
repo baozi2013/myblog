@@ -29,6 +29,7 @@
         <li class="<%= title == 'THZLAB' ? 'active' : ''%>"><a title="home" href="/">THZLAB</a></li>
         <li class="<%= title == 'Archive' ? 'active' : ''%>"><a title="archive" href="/archive">Archive</a></li>
         <% if (locals.user){%>
+        <li class="<%= title ==  locals.user.name ? 'active' : ''%>"><a title="post" href="/u/<%= locals.user.name%>"><%= locals.user.name%></a></li>
         <li class="<%= title == 'Post' ? 'active' : ''%>"><a title="post" href="/post">Post</a></li>
         <li class="<%= title == 'Upload' ? 'active' : ''%>"><a title="upload" href="/upload">Upload</a></li>
         <li class="<%= title == 'Logout' ? 'active' : ''%>"><a title="logout" href="/logout">Logout</a></li>
@@ -36,8 +37,6 @@
         <li class="<%= title == 'Login' ? 'active' : ''%>"><a title="login" href="/login">Login</a></li>
         <li class="<%= title == 'Register' ? 'active' : ''%>"><a title="register" href="/reg">Register</a></li>
         <% } %>
-        <li class="facebook-login"><fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-        </fb:login-button></li>
       </ul>
 
     </div>
