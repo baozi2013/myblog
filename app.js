@@ -66,9 +66,9 @@ app.listen(app.get('port'), function() {
 });
 app.use(passport.initialize());
 passport.use(new GithubStrategy({
-  clientID: "9a5368a8000005fd0d21",
-  clientSecret: "5a45aca590ddfb74674a439d9e71c52ab0a1973f",
-  callbackURL: "http://localhost:3000/login/github/callback"
+  clientID: "4eefd14dac3876900d82",
+  clientSecret: "9744e302c5367465c2c99e239dfde5ac0d7acd1c",
+  callbackURL: "https://thzlab.herokuapp.com/login/github/callback"
 }, function(accessToken, refreshToken, profile, done) {
   done(null, profile);
 }));
