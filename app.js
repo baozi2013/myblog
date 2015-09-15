@@ -73,9 +73,9 @@ passport.use(new GithubStrategy({
   done(null, profile);
 }));
 passport.use(new FacebookStrategy({
-      clientID: "1494170534213878",
-      clientSecret: "c56930b333373e322e21af88945b1c0b",
-      callbackURL: "http://localhost:3000/login/facebook/callback"
+      clientID: "1615330155411315",
+      clientSecret: "05ed6a8c8ca43b7cb2e4615ce9755a1b",
+      callbackURL: "https://thzlab.herokuapp.com/login/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
       return done(null, profile);
