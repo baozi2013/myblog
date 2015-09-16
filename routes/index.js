@@ -280,6 +280,9 @@ module.exports = function(app) {
         req.session.user = {name: req.user.displayName, head: "https://gravatar.com/avatar/" + req.user._json.gravatar_id + "?s=48"};
         res.redirect('/');
       });
+  app.get('/resume', function(req,res){
+    res.render('resume')
+  });
   app.use(function (req, res) {
     res.render("404");
   });
