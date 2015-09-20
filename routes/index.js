@@ -283,6 +283,9 @@ module.exports = function(app) {
   app.get('/resume', function(req,res){
     res.render('resume')
   });
+  app.get('/portfolio', function(req,res){
+    res.render('portfolio')
+  });
   app.use(function (req, res) {
     res.render("404");
   });
