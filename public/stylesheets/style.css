@@ -50,6 +50,7 @@ i{
   margin-right: 0.5em;
 }
 /*Portfolio CSS*/
+/*Intro Section*/
 .loader{
   position: fixed;
   top: 50%;
@@ -62,11 +63,30 @@ i{
 }
 .profile{
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%,-50%);
+  text-align: center;
 }
 .profile img{
   border-radius: 50%;
 }
+.profile h1{
+  font-size: 3rem;
+  font-family: 'Tangerine',serif;
+  margin-top: 20px;
+}
+@media only screen and (min-width: 768px) {
+  .profile img{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+  }
+  .profile h1{
+    font-size: 5rem;
+    font-family: 'Tangerine',serif;
+    margin-top: 40px;
+  }
+}
+/*My Work Section*/
