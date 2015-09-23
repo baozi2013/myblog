@@ -2,7 +2,9 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+.active>a{
+  background-color: lightgray !important;
+}
 a {
   color: #00B7FF;
 }
@@ -90,3 +92,52 @@ i{
   }
 }
 /*My Work Section*/
+.container{
+  width: 90%;
+  position: relative;
+  margin: 0 auto;
+}
+@media screen and (min-width: 1600px) {
+  .container {
+    width: 80%;
+  }
+}
+.grid-item {
+  position: relative;
+  margin: 5px 10px 5px 0;
+}
+@media only screen and (min-width: 768px) {
+  /* line 659, ../sass/style.scss */
+  .grid-item img {
+    width: 150px;
+    height: 100px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  /* line 659, ../sass/style.scss */
+  .grid-item img {
+    width: 250px;
+    height: 150px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+
+  .grid-item img {
+    transition: all, 0.5s;
+    width: 300px;
+    height: 200px;
+  }
+}
+#work ul{
+  margin-top: 3%;
+}
+#work ul li{
+  display: inline-block;
+}
+#work ul li button{
+  width: 10em;
+  margin-right: 1em;
+}
+#work h1{
+  margin-top: 10%;
+}

@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <title>Tianheng Zhou's Portfolio</title>
     <meta charset="UTF-8">
     <meta name="author" content="Tianheng Zhou" />
     <meta name="description" content="Tianheng Zhou's Personal Portfolio" />
@@ -11,13 +12,42 @@
     <link rel="stylesheet" type="text/css" href="/js/jquery.fullPage.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.fullPage.css" />
     <link rel="stylesheet" href="/stylesheets/style.css"/>
-    <title>Tianheng Zhou's Portfolio</title>
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="/js/jquery.fullPage.js"></script>
     <script type="text/javascript" src="/js/isotope.min.js"></script>
     <script type="text/javascript" src="/js/portfolio.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css' />
+    <link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' />
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        $('.close').click(function(){
+            $(this).parent().removeClass('in');
+        });
+    </script>
 </head>
 <body>
+<header class="nav navbar-default navbar-fixed-top">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li class="<%= title == 'THZLAB' ? 'active' : ''%>"><a title="home" href="/">THZLAB</a></li>
+            <li class="<%= title == 'Archive' ? 'active' : ''%>"><a title="archive" href="/archive">Archive</a></li>
+            <% if (locals.user){%>
+            <li class="<%= title ==  locals.user.name ? 'active' : ''%>"><a title="post" href="/u/<%= locals.user.name%>"><%= locals.user.name%></a></li>
+            <li class="<%= title == 'Post' ? 'active' : ''%>"><a title="post" href="/post">Post</a></li>
+            <li class="<%= title == 'Upload' ? 'active' : ''%>"><a title="upload" href="/upload">Upload</a></li>
+            <li class="<%= title == 'Logout' ? 'active' : ''%>"><a title="logout" href="/logout">Logout</a></li>
+            <%} else{%>
+            <li class="<%= title == 'Login' ? 'active' : ''%>"><a title="login" href="/login">Login</a></li>
+            <li class="<%= title == 'Register' ? 'active' : ''%>"><a title="register" href="/reg">Register</a></li>
+            <% } %>
+            <li><a href="/resume">Resume</a></li>
+            <li class="<%= title == 'Portfolio' ? 'active' : ''%>"><a title="portfolio" href="/portfolio">Portfolio</a></li>
+        </ul>
+
+    </div>
+
+</header>
  <div class="loader">
      <img src="/images/loader.gif" alt="loader"/>
  </div>
@@ -33,14 +63,14 @@
             <div class="container">
                 <h1>My works</h1>
                 <ul>
-                    <li><button>All</button></li>
-                    <li><button>Web App</button></li>
-                    <li><button>Static Single Page</button></li>
-                    <li><button>jQuery & JavaScript</button></li>
+                    <li><button class="btn btn-default btn-group-lg">All</button></li>
+                    <li><button class="btn btn-default btn-group-lg">Web App</button></li>
+                    <li><button class="btn btn-default btn-group-lg">Static Page</button></li>
+                    <li><button class="btn btn-default btn-group-lg">jQuery</button></li>
                 </ul>
                 <div class="grid">
                     <div class="grid-item">
-                        <img src="" alt=""/>
+                        <img src="/images/blog.jpg" alt="blog"/>
                         <div>
                             <h3>123</h3>
 
@@ -52,7 +82,7 @@
                         </div>
                     </div>
                     <div class="grid-item">
-                        <img src="" alt=""/>
+                        <img src="/images/resume.jpg" alt="resume"/>
                         <div>
                             <h3>123</h3>
 
@@ -64,7 +94,7 @@
                         </div>
                     </div>
                     <div class="grid-item">
-                        <img src="" alt=""/>
+                        <img src="/images/portfolio.jpg" alt="portfolio"/>
                         <div>
                             <h3></h3>
 

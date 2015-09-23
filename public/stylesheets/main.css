@@ -146,21 +146,9 @@ EDUCATION
     background: #eee;
     margin-bottom: 10px;
     position: relative;
+    left: 5px;
     padding: 10px 10px 0 10px;
     border-bottom: 1px solid #ddd;
-}
-#education .description:after {
-    content: '';
-    position: absolute;
-    top: 15px;
-    right: 0;
-    left: -16px;
-    height: 0;
-    width: 0;
-    border: solid transparent;
-    border-right-color: #eee;
-    border-width: 8px;
-    pointer-events: none;
 }
 #education .description h3{
     font-size: 1.6em;

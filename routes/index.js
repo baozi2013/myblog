@@ -29,7 +29,7 @@ module.exports = function(app) {
   app.get('/reg',checkNotLogin);
   app.get('/reg', function (req, res) {
     res.render('register',{
-      title: 'Registration',
+      title: 'Register',
       user: req.session.user,
       success: req.flash('success').toString(),
       error: req.flash('error').toString()
@@ -281,10 +281,20 @@ module.exports = function(app) {
         res.redirect('/');
       });
   app.get('/resume', function(req,res){
-    res.render('resume')
+    res.render('resume', {
+      title: 'Resume',
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
+    })
   });
   app.get('/portfolio', function(req,res){
-    res.render('portfolio')
+    res.render('portfolio',{
+          title: 'Portfolio',
+          user : req.session.user,
+          success : req.flash('success').toString(),
+          error : req.flash('error').toString()
+    });
   });
   app.use(function (req, res) {
     res.render("404");

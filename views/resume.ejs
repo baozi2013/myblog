@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/stylesheets/main.css"/>
     <title>Personal Resume - Tianheng Zhou</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Tianheng Zhou" />
+    <meta name="description" content="Tianheng Zhou's Personal Resume" />
+    <meta name="keywords"  content="fullpage,jquery,resume" />
+    <meta name="Resource-type" content="Document" />
+    <link rel="stylesheet" href="/stylesheets/main.css"/>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css' />
+    <link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' />
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/js/resume.js"></script>
+    <script>
+        $('.close').click(function(){
+            $(this).parent().removeClass('in');
+        });
+    </script>
 </head>
 <body>
-<div class="container">
+    <header class="nav navbar-default navbar-fixed-top">
+    <div class="container" style="margin: auto">
+        <ul class="nav navbar-nav">
+            <li class="<%= title == 'THZLAB' ? 'active' : ''%>"><a title="home" href="/">THZLAB</a></li>
+            <li class="<%= title == 'Archive' ? 'active' : ''%>"><a title="archive" href="/archive">Archive</a></li>
+            <% if (locals.user){%>
+            <li class="<%= title ==  locals.user.name ? 'active' : ''%>"><a title="post" href="/u/<%= locals.user.name%>"><%= locals.user.name%></a></li>
+            <li class="<%= title == 'Post' ? 'active' : ''%>"><a title="post" href="/post">Post</a></li>
+            <li class="<%= title == 'Upload' ? 'active' : ''%>"><a title="upload" href="/upload">Upload</a></li>
+            <li class="<%= title == 'Logout' ? 'active' : ''%>"><a title="logout" href="/logout">Logout</a></li>
+            <%} else{%>
+            <li class="<%= title == 'Login' ? 'active' : ''%>"><a title="login" href="/login">Login</a></li>
+            <li class="<%= title == 'Register' ? 'active' : ''%>"><a title="register" href="/reg">Register</a></li>
+            <% } %>
+            <li class="<%= title == 'Resume' ? 'active' : ''%>"><a title="resume" href="/resume">Resume</a></li>
+            <li class="<%= title == 'Portfolio' ? 'active' : ''%>"><a title="portfolio" href="/portfolio">Portfolio</a></li>
+        </ul>
+
+    </div>
+
+</header>
+    <div class="container">
     <div class="row">
         <div class="col-xs-12 text-center">
             <div id="photo"><img src="/Profile.jpg" alt="avatar"/>
@@ -114,7 +145,7 @@
                 </div>
                 <div class="project clearfix">
                     <div class="col-xs-12">
-                        <div class="title"><strong>Resume</strong> — Web Resume via Html,  Javascript and CSS
+                        <div class="title"><strong>Resume</strong> — Static Single Page
                             <div class="pull-right">
                                 <a class="link" href="http://thzlab.herokuapp.com/resume">Demo</a> |
                                 <a class="link" href="https://github.com/tianhengzhou/resume">Code</a>
@@ -181,15 +212,5 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="/js/resume.js"></script>
 </body>
 </html>
