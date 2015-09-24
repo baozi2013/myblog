@@ -3,7 +3,7 @@
  */
 var timeStart = Date.now();
 
-    $(window).load(function () {
+    $(document).ready(function () {
         var timeDuration = Date.now() - timeStart;
         if (timeDuration < 1000) {
             setTimeout(function () {
@@ -16,6 +16,16 @@ var timeStart = Date.now();
             $(".loader").fadeOut('slow',function(){
                 $('.content').fadeIn('slow')});
         }
+        $(".grid-item").mouseenter(function(){
+            $('this').find('.detail').addClass('showdetail');
+        });
+        $(".grid-item").mouseleave(function(){
+            $('this').find('.detail').removeClass('showdetail');
+        });
+        var $grid= $('.grid').isotope({
+            itemSelector: '.grid-item',
+            layoutMode: 'fitRows'
+        });
         $('#fullpage').fullpage({
             verticalCentered: true,
             navigation: true,
@@ -24,3 +34,4 @@ var timeStart = Date.now();
             sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE']
         });
     });
+

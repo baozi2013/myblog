@@ -97,6 +97,21 @@ i{
   position: relative;
   margin: 0 auto;
 }
+.detail{
+  visibility: hidden;
+  top: -7%;
+  width: 100%;
+  height: 80%;
+  text-align: center;
+}
+.showdetail {
+  visibility: visible;
+}
+.grid-item img {
+  width: 150px;
+  height: 100px;
+}
+
 @media screen and (min-width: 1600px) {
   .container {
     width: 80%;
