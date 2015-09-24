@@ -14,19 +14,8 @@
     <link rel="stylesheet" href="/stylesheets/style.css"/>
     <!--<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>-->
     <!--<script src="/bower_components/jquery/dist/jquery.js"></script>-->
-    <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.fullPage.js"></script>
-    <script type="text/javascript" src="/js/isotope.min.js"></script>
-    <script type="text/javascript" src="/js/portfolio.js"></script>
-    <script src="/bower_components/angular/angular.min.js"></script>
     <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css' />
     <link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' />
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script>
-        $('.close').click(function(){
-            $(this).parent().removeClass('in');
-        });
-    </script>
 </head>
 <body>
 <header class="nav navbar-default navbar-fixed-top">
@@ -62,48 +51,51 @@
             </div>
         </div>
         <div class="section" id="work">
-            <div class="container">
+            <div class="containerWork">
                 <h1>My works</h1>
                 <ul>
-                    <li><button class="btn btn-default btn-group-lg">All</button></li>
-                    <li><button class="btn btn-default btn-group-lg">Web App</button></li>
-                    <li><button class="btn btn-default btn-group-lg">Static Page</button></li>
-                    <li><button class="btn btn-default btn-group-lg">jQuery</button></li>
+                    <li><button class="btn btn-default btn-group-lg" data-filter="">All</button></li>
+                    <li><button class="btn btn-default btn-group-lg" data-filter="web-app">Web App</button></li>
+                    <li><button class="btn btn-default btn-group-lg" data-filter="static">Static Page</button></li>
+                    <li><button class="btn btn-default btn-group-lg" data-filter="jquery">jQuery</button></li>
                 </ul>
                 <div class="grid">
-                    <div class="grid-item">
+                    <div class="grid-item web-app">
                         <img src="/images/blog.jpg" alt="blog"/>
-                        <div class="detail">
+                        <div class="hoverpopup">
                             <h3>THZ Blog</h3>
 
                             <p>Personal Blog built on Mean Stack</p>
                             <br/>
                             <br/>
-                            <a href="">Demo</a>
+                            <a href="http://thzlab.herokuapp.com">Demo</a>
+                             |
                             <a href="">Code</a>
                         </div>
                     </div>
-                    <div class="grid-item">
+                    <div class="grid-item static">
                         <img src="/images/resume.jpg" alt="resume"/>
-                        <div class="detail">
+                        <div class="hoverpopup">
                             <h3>Resume</h3>
 
                             <p>Static Single Page</p>
                             <br/>
                             <br/>
-                            <a href="">Demo</a>
+                            <a href="http://thzlab.herokuapp.com/resume">Demo</a>
+                             |
                             <a href="">Code</a>
                         </div>
                     </div>
-                    <div class="grid-item">
+                    <div class="grid-item jquery">
                         <img src="/images/portfolio.jpg" alt="portfolio"/>
-                        <div class="detail">
+                        <div class="hoverpopup">
                             <h3>Portfolio</h3>
 
                             <p>Scrollable Front Page</p>
                             <br/>
                             <br/>
-                            <a href="">Demo</a>
+                            <a href="http://thzlab.herokuapp.com/portfolio">Demo</a>
+                             |
                             <a href="">Code</a>
                         </div>
                     </div>
@@ -115,5 +107,10 @@
         </div>
     </div>
  </div>
+<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="/js/jquery.fullPage.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/isotope.min.js"></script>
+<script type="text/javascript" src="/js/portfolio.js"></script>
 </body>
 </html>
