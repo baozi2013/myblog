@@ -7,7 +7,10 @@ var timeStart = Date.now();
         var timeDuration = Date.now() - timeStart;
         $(".loader").fadeOut('slow',function(){
             $('.content').fadeIn('slow')});
-
+        var $grid= $('.grid').isotope({
+            itemSelector: '.grid-item',
+            layoutMode: 'fitRows'
+        });
         $('#work ul li button').click(function(){
             var data = $(this).data('filter');
             if(data){
@@ -19,11 +22,11 @@ var timeStart = Date.now();
 
         });
         $('.grid-item').mouseover(function(){
-            $(this).find('img').addClass('hoverOn')
+            $(this).find('img').addClass('hoverOn');
             $(this).find('.hoverpopup').addClass('showDetail')
         });
         $('.grid-item').mouseout(function(){
-            $(this).find('img').removeClass('hoverOn')
+            $(this).find('img').removeClass('hoverOn');
             $(this).find('.hoverpopup').removeClass('showDetail')
         })
         //$('.grid-item').mouseover(function(){
@@ -35,10 +38,7 @@ var timeStart = Date.now();
         //    $(this).find('img').removeClass('hoverOn');
         //    $(this).find('.info').removeClass('showInfo');
         //})
-        var $grid= $('.grid').isotope({
-            itemSelector: '.grid-item',
-            layoutMode: 'fitRows'
-        });
+
         $('#fullpage').fullpage({
             verticalCentered: true,
             navigation: true,
