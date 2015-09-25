@@ -98,11 +98,6 @@ i{
   top: -15%;
   margin: 0 auto;
 }
-.grid-item img {
-  width: 150px;
-  height: 100px;
-}
-
 @media screen and (min-width: 1600px) {
   .container {
     width: 80%;
@@ -155,8 +150,8 @@ i{
 @media only screen and (min-width: 768px) {
   /* line 659, ../sass/style.scss */
   .grid-item img {
-    width: 150px;
-    height: 100px;
+    width: 400px;
+    height: 300px;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -183,4 +178,23 @@ i{
 #work ul li button{
   width: 10em;
   margin-right: 1em;
+}
+/*Portfolio Contact Section*/
+.contact-text{
+  position: absolute;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+.contact-text h1{
+  font-size: 6rem;
+}
+.contact-text p{
+  font-size: 2rem;
+}
+.contact-text .contact-btn{
+  margin-top: 3%;
+}
+.contact-text .contact-btn a{
+  width: 35%;
 }
