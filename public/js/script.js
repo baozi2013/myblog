@@ -15,6 +15,11 @@ app.controller('customersCtrl', function($scope, $http) {
         $scope.categoryq = category;
     };
 });
+app.filter("sanitize", ['$sce', function($sce) {
+    return function(htmlCode){
+        return $sce.trustAsHtml(htmlCode);
+    }
+}]);
 
 
 

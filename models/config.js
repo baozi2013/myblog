@@ -1,8 +1,8 @@
 /**
  * Created by tianhengzhou on 8/8/15.
  */
-var path = require('path')
-var rootPath = path.normalize(__dirname + '/../')
+var path = require('path');
+var rootPath = path.normalize(__dirname + '/../');
 module.exports={
     dev: {
         cookieSecret: 'myblog',
