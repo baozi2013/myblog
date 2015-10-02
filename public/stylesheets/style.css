@@ -22,8 +22,7 @@ a.btn {
   margin-top: 0.8em;
 }
 .post{
-  border-bottom: grey 1px dotted;
-  padding-bottom: 0.2em;
+  padding-bottom: 0.8em;
 }
 .categoryLabel{
   display: inline-block;

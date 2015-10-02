@@ -226,7 +226,22 @@ module.exports = function(app) {
     })
   });
   app.get('/data',function(req,res){
-    Post.getAll(null, function (err, posts) {
+    options = {
+      sort: {
+        top: -1,
+        time_for_sort: -1
+      }};
+    Post.getAll(null, options,function (err, posts) {
+      //console.log(posts);
+      //console.log(req.session.user)
+      res.send(posts);})
+  });
+  app.get('/articleData',function(req,res){
+    options = {
+      sort: {
+        time_for_sort: -1
+      }};
+    Post.getAll(null, options,function (err, posts) {
       //console.log(posts);
       //console.log(req.session.user)
       res.send(posts);})

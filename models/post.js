@@ -55,12 +55,7 @@ Post.prototype.save = function(callback){
     })
 };
 
-Post.getAll = function (name, callback) {
-    options = {
-        sort: {
-            top: -1,
-            time_for_sort: -1
-    }};
+Post.getAll = function (name, options, callback) {
     if (!name){
         postModel.find({},null,options,function(err,posts){
             if (err){
@@ -106,9 +101,9 @@ Post.edit = function(_id, callback){
 
 Post.update = function(_id, newpost, callback){
     var date = new Date();
-    var m_names = new Array("Jan", "Feb", "Mar",
+    var m_names = ["Jan", "Feb", "Mar",
         "Apr", "May", "Jun", "Jul", "Aug", "Sep",
-        "Oct", "Nov", "Dec");
+        "Oct", "Nov", "Dec"];
     var curr_date = date.getDate(),
         curr_month = date.getMonth(),
         curr_year = date.getFullYear();

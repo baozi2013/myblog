@@ -2,19 +2,52 @@
 Welcome to THZLAB
 <div ng-app="myApp">
     <div ng-controller="customersCtrl">
-        <div dir-paginate="post in posts | itemsPerPage: pageSize | orderBy: sortType:sortReverse" current-page="currentPage" class="post">
-            <p><h2><a href="/p/{{post._id}}">{{post.title}}</a></h2></p>
-            <p>
-                Page View: {{post.pv}}
+        <div class="row">
+            <div class="col-xs-8">
+                <div dir-paginate="post in posts | filter:{title: query} | filter:{category: categoryq} | itemsPerPage: pageSize | orderBy: sortType:sortReverse" current-page="currentPage" class="post">
+                    <p>
+                        <h2>
+                            <a href="/p/{{post._id}}">{{post.title}}</a>
+                        </h2>
+                    </p>
+                    <p>
+                        Page View: {{post.pv}}
                 <span class="label label-danger">
                     {{post.category}}
                 </span>
-            </p>
-            <p class="info">
-                Author: <a href="/u/{{post.name}}">{{post.name}}</a>
-                Date: {{post.time}}
-            </p>
-            <div ng-bind-html="post.content | sanitize"></div>
+                    </p>
+                    <p class="info">
+                        Author: <a href="/u/{{post.name}}">{{post.name}}</a>
+                        Date: {{post.time}}
+                    </p>
+                    <div ng-bind-html="post.content | sanitize"></div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="row">
+                    <p><strong>Search Title</strong></p>
+                    <div class="col-xs-10">
+                        <input type="text" ng-model="query" id="search" class="form-control" placeholder="Search text"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <p><strong>Categories</strong></p>
+                    <ul>
+                        <li>
+                            <a ng-click="categoryquery('')" href="#">All</a>
+                        </li>
+                        <li ng-repeat="category in categories">
+                            <a ng-click="categoryquery(category)" href="#">{{ category }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <p><strong>Latest Article</strong></p>
+                    <ul>
+                        <li ng-repeat="article in articles | orderBy: time"><a href="/p/{{article._id}}">{{article.title}}</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

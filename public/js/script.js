@@ -8,6 +8,9 @@ app.controller('customersCtrl', function($scope, $http) {
     $http.get('/data').success(function (data) {
         $scope.posts = data
     });
+    $http.get('/articleData').success(function (data) {
+        $scope.articles = data
+    });
     $http.get('/categories').success(function (data) {
         $scope.categories = data
     });
