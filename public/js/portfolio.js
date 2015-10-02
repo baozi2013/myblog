@@ -28,7 +28,7 @@ var timeStart = Date.now();
         $('.grid-item').mouseout(function(){
             $(this).find('img').removeClass('hoverOn');
             $(this).find('.hoverpopup').removeClass('showDetail')
-        })
+        });
         //$('.grid-item').mouseover(function(){
         //    $(this).find('img').addClass('hoverOn');
         //    $(this).find('.hover').addClass('showDetail');

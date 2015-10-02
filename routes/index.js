@@ -18,7 +18,7 @@ module.exports = function(app) {
       //console.log(posts);
       //console.log(req.session.user)
       res.render('index', {
-        title: 'THZLAB',
+        title: 'Home',
         user: req.session.user,
         posts: posts,
         success: req.flash('success').toString(),
@@ -251,9 +251,9 @@ module.exports = function(app) {
       res.json(categories);
     })
   });
-  app.get('/archive', function (req, res) {
-    res.render('archive', {
-      title: 'Archive' ,
+  app.get('/blog', function (req, res) {
+    res.render('blog', {
+      title: 'Blog' ,
       user: req.session.user,
       success: req.flash('success').toString(),
       error:req.flash('error').toString()});

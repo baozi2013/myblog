@@ -78,6 +78,7 @@ i{
   font-family: 'Tangerine',serif;
   margin-top: 20px;
 }
+
 @media only screen and (min-width: 768px) {
   .profile img{
     border-radius: 50%;
