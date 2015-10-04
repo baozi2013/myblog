@@ -1,6 +1,5 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 .active>a{
   background-color: lightgray !important;
@@ -10,6 +9,11 @@ a {
 }
 a:hover {
   text-decoration: none !important;
+}
+h1, h2, h4{
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid #e6e6e6;
 }
 .info {
   margin-top: 5px;
