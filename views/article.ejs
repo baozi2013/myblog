@@ -1,4 +1,6 @@
 <%- include header %>
+<div class="container">
+    <h1><%= title %></h1>
 <p class="info">
     Author: <a href="/p/<%=post._id%>"><%= post.name%></a>
     Date: <%= post.time%>
@@ -14,4 +16,5 @@
 <% } %>
 <% } %>
 <%- include comment %>
+</div>
 <%- include footer %>

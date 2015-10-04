@@ -1,5 +1,7 @@
 <%- include header %>
-<% locals.posts.forEach(function (post, index) { %>
+<div class="container">
+    <h1><%= title %></h1>
+    <% locals.posts.forEach(function (post, index) { %>
 <p><h2><a href="/p/<%= post._id%>"><%= post.title %></a></h2></p>
 <p class="info">
     Author：<a href="/u/<%= post.name %>"><%= post.name %></a> |
@@ -8,4 +10,5 @@
 <p>Comments: <span class="fb-comments-count" data-href="http://techbow.net:3000/p/<%= post._id%>"></span> Page View: <%= post.pv%> <span class="label label-danger"><%= post.category%></span></p>
 <p><%- post.content %></p>
 <% }) %>
+</div>
 <%- include footer %>
