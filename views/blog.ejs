@@ -5,7 +5,7 @@
     <div ng-controller="customersCtrl">
         <div class="row">
             <div class="col-md-offset-1 col-xs-7">
-                <div dir-paginate="post in posts | filter:{title: query} | filter:{category: categoryq} | itemsPerPage: 3 | orderBy: sortType:sortReverse" current-page="currentPage" class="post">
+                <div dir-paginate="post in posts | filter:{title: query} | filter:{category: categoryq} | itemsPerPage: 3 | orderBy: sortType:sortReverse" current-page="currentPage" class="post" ng-cloak>
                     <p>
                     <h2>
                         <a href="/p/{{post._id}}">{{post.title}}</a>
@@ -20,7 +20,7 @@
                     <p>
                         Page View: {{post.pv}}
                         <span class="label label-danger">
-                            {{post.category}}
+                            <a href="/{{post.category}}" style="color:white">{{post.category}}</a>
                         </span>
                     </p>
                     <div ng-bind-html="post.content | sanitize"></div>

@@ -3,16 +3,30 @@
     <h1><%= title %></h1>
     <div class="row">
         <div class="col-xs-12">
-
+            <p class="type"></p>
+            <p class="type2"></p>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-6">
-
+            <div ng-app="myApp">
+                <div ng-controller="customersCtrl">
+                    <p>Feature Articles</p>
+                    <div class="blog-title">
+                        <ul>
+                            <li ng-repeat="article in articles | filter:{top: 1 }">
+                                $ <a href="/p/{{article._id}}">{{article.title}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-xs-6">
+            <p>Feature Project</p>
 
         </div>
     </div>
 </div>
+
 <%- include footer.ejs%>

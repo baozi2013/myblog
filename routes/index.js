@@ -170,7 +170,7 @@ module.exports = function(app) {
       }
       res.render('article',{
         title: post.title,
-        post: post,
+        postId: post._id,
         user: req.session.user,
         success:req.flash('success').toString(),
         error: req.flash('error').toString()
@@ -273,6 +273,21 @@ module.exports = function(app) {
         error : req.flash('error').toString()
       });
     });
+  });
+  app.get('/:category', function(req,res){
+    Post.getOnecategory(req.params.category,function(err,posts){
+      if (err){
+        req.flash('error', err);
+        return res.redirect('/');
+      }
+      res.render('user', {
+        title: req.params.category,
+        posts: posts,
+        user : req.session.user,
+        success : req.flash('success').toString(),
+        error : req.flash('error').toString()
+      });
+    })
   });
   app.get("/login/github", passport.authenticate("github", {session: false}));
   app.get("/login/github/callback", passport.authenticate("github", {

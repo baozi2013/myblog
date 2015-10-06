@@ -2,32 +2,33 @@
 <div class="container">
     <h1><%= title %></h1>
     <form method="post" role="form">
-    <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" class="form-control" name="title" value="<%= post.title%>"/>
-    </div>
-    <% if (locals.user.name == 'zth198814'){ %>
-    <div class="form-group">
-        <div class="radio">
-            <label for="top"><input type="radio" name="top" <% if (post.top == 1){%> checked<%}%>/>Feature Post</label>
-    </div>
-    <% } %>
-    <div class="form-group">
-        <label for="category">Categories: </label>
-        <select name="category" id="categories">
-            <option value="angualar">Angular.js</option>
-            <option value="frontend">Front End</option>
-            <option value="mongodb">MongoDB</option>
-            <option value="node">Node.js</option>
-            <option value="express">Express.js</option>
-            <option value="misc">Misc</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="content">Content:</label>
-        <textarea name="content" class="form-control" rows="5"><%= post.content%></textarea>
-    </div>
-    <input type="submit" class="btn btn-default" value="Save"/>
-</form>
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" name="title" value="<%= post.title%>"/>
+        </div>
+        <% if (locals.user.name == 'zth198814'){ %>
+        <div class="form-group">
+            <div class="radio">
+                <label for="top"><input type="radio" name="top" <% if (post.top == 1){%> checked<%}%>/>Feature Post</label>
+            </div>
+        </div>
+        <% } %>
+        <div class="form-group">
+            <label for="category">Categories: </label>
+            <select name="category" id="categories">
+                <option value="angualar">Angular.js</option>
+                <option value="frontend">Front End</option>
+                <option value="mongodb">MongoDB</option>
+                <option value="node">Node.js</option>
+                <option value="express">Express.js</option>
+                <option value="misc">Misc</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="content">Content:</label>
+            <textarea name="content" class="form-control" rows="5"><%= post.content%></textarea>
+        </div>
+        <input type="submit" class="btn btn-default" value="Save"/>
+    </form>
 </div>
 <%- include footer %>

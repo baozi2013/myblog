@@ -1,5 +1,6 @@
 body {
   padding: 50px;
+  background-image: url('/images/bg.png');
 }
 .active>a{
   background-color: lightgray !important;
@@ -12,8 +13,53 @@ a:hover {
 }
 h1, h2, h4{
   padding-bottom: 0.5em;
-  margin-bottom: 0.5em;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid lightgray;
+}
+ul{
+  list-style-type: none;
+}
+.centralize{
+  position: relative;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%);
+}
+.bottom{
+  position: relative;
+  top:100%
+}
+.type{
+  font-size: 5em;
+  line-height: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+.type2{
+  font-size: 5em;
+  line-height: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+.typed-cursor{
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+}
+@keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
 }
 .info {
   margin-top: 5px;
