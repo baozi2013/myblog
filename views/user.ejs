@@ -1,6 +1,6 @@
 <%- include header %>
 <div class="container">
-    <h1><%= title %></h1>
+    <h1 class="writer"><%= title %></h1>
     <% locals.posts.forEach(function (post, index) { %>
 <p><h2><a href="/p/<%= post._id%>"><%= post.title %></a></h2></p>
 <p class="info">

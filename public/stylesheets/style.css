@@ -64,6 +64,9 @@ ul{
 .info {
   margin-top: 5px;
 }
+.main{
+  opacity: 0;
+}
 a.btn {
   margin-top: 0.3em;
   margin-bottom: 0.3em;

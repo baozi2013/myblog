@@ -1,11 +1,52 @@
-<%- include header.ejs%>
-<div class="container">
-    <h1><%= title %></h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog</title>
+    <meta property="qc:admins" content="35003737402441260527351006375" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css' />
+    <link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' />
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/js/typed.js"></script>
+    <script src="/js/dirPagination.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/animation.js"></script>
+    <script>
+        $('.close').click(function(){
+            $(this).parent().removeClass('in');
+        });
+        $(document).ready(function() {
+            $('.main').fadeTo('slow',1);
+            $('a').click(function (event) {
+                event.preventDefault();
+                var href = this.href;
+
+                $('.main').animate({
+                            opacity: '0'
+                        }, 400, function () {
+                            //want to use callback function to load the page....
+                            window.location = href;
+                        }
+                );
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div class="container main">
     <div class="row">
         <div class="col-xs-12">
-            <p class="type"></p>
-            <p class="type2"></p>
+            <p class="type" id="type"></p>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3 text-center"><a href="/blog" class="btn btn-lg btn-link">Blog</a></div>
+        <div class="col-xs-3 text-center"><a href="#" class="btn btn-lg btn-link">Projects</a></div>
+        <div class="col-xs-3 text-center"><a href="/resume" class="btn btn-lg btn-link">Resume</a></div>
+        <div class="col-xs-3 text-center"><a href="#" class="btn btn-lg btn-link">Contact</a></div>
     </div>
     <div class="row">
         <div class="col-xs-6">
@@ -28,5 +69,5 @@
         </div>
     </div>
 </div>
-
-<%- include footer.ejs%>
+</body>
+</html>

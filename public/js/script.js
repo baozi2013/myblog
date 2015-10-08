@@ -18,9 +18,6 @@ app.controller('customersCtrl', function($scope, $http) {
         $scope.categoryq = category;
     };
 });
-app.controller('articleCtrl',function($scope, $http){
-   $http.get
-});
 app.filter("sanitize", ['$sce', function($sce) {
     return function(htmlCode){
         return $sce.trustAsHtml(htmlCode);

@@ -1,7 +1,7 @@
 <%- include header %>
 <div class="container">
-    <h1><%= title %></h1>
-        <div ng-app="myApp">
+    <h1 class="writer"><%= title %></h1>
+        <div ng-app="myApp" class="main">
             <div ng-controller="customersCtrl" ng-init="postid = '<%=postId%>'">
                 <div class="row">
                 <div ng-repeat="post in posts" ng-cloak>
@@ -29,12 +29,13 @@
                                 <a class="btn btn-link" ng-href="/p/{{posts[$index+1]._id}}" ng-show="!$last">Next: {{posts[$index+1].title}}</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <%- include comment %>
             </div>
         </div>
-    </div>
+            <%- include comment %>
+
+        </div>
+
 </div>
 <%- include footer %>
