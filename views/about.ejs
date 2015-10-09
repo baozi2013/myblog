@@ -1,48 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <title>Personal Resume - Tianheng Zhou</title>
-    <meta charset="UTF-8">
-    <meta name="author" content="Tianheng Zhou" />
-    <meta name="description" content="Tianheng Zhou's Personal Resume" />
-    <meta name="keywords"  content="fullpage,jquery,resume" />
-    <meta name="Resource-type" content="Document" />
-    <link rel="stylesheet" href="/stylesheets/main.css"/>
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css' />
-    <link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' />
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/js/resume.js"></script>
-    <script>
-        $('.close').click(function(){
-            $(this).parent().removeClass('in');
-        });
-    </script>
-</head>
-<body>
-    <header class="nav navbar-default navbar-fixed-top">
-    <div class="container" style="margin: auto">
-        <ul class="nav navbar-nav">
-            <li class="<%= title == 'THZLAB' ? 'active' : ''%>"><a title="home" href="/">THZLAB</a></li>
-            <li class="<%= title == 'Archive' ? 'active' : ''%>"><a title="archive" href="/archive">Archive</a></li>
-            <% if (locals.user){%>
-            <li class="<%= title ==  locals.user.name ? 'active' : ''%>"><a title="post" href="/u/<%= locals.user.name%>"><%= locals.user.name%></a></li>
-            <li class="<%= title == 'Post' ? 'active' : ''%>"><a title="post" href="/post">Post</a></li>
-            <li class="<%= title == 'Upload' ? 'active' : ''%>"><a title="upload" href="/upload">Upload</a></li>
-            <li class="<%= title == 'Logout' ? 'active' : ''%>"><a title="logout" href="/logout">Logout</a></li>
-            <%} else{%>
-            <li class="<%= title == 'Login' ? 'active' : ''%>"><a title="login" href="/login">Login</a></li>
-            <li class="<%= title == 'Register' ? 'active' : ''%>"><a title="register" href="/reg">Register</a></li>
-            <% } %>
-            <li class="<%= title == 'Resume' ? 'active' : ''%>"><a title="resume" href="/resume">Resume</a></li>
-            <li class="<%= title == 'Portfolio' ? 'active' : ''%>"><a title="portfolio" href="/portfolio">Portfolio</a></li>
-        </ul>
-
-    </div>
-
-</header>
-    <div class="container">
-    <div class="row">
+<%- include header %>
+<div class="container">
+    <h1 class="writer"><%= title%></h1>
+    <div class="row main">
         <div class="col-xs-12 text-center">
             <div id="photo"><img src="/Profile.jpg" alt="avatar"/>
 
@@ -132,10 +91,10 @@
                 <div class="project clearfix">
                     <div class="col-xs-12">
                         <div class="title"><strong>Portfolio</strong> — Scrollable Front Page
-                           <div class="pull-right">
-                            <a class="link" href="http://thzlab.herokuapp.com/portfolio">Demo</a> |
-                            <a class="link" href="https://github.com/tianhengzhou/myblog/blob/master/views/portfolio.ejs">Code</a>
-                           </div>
+                            <div class="pull-right">
+                                <a class="link" href="http://thzlab.herokuapp.com/portfolio">Demo</a> |
+                                <a class="link" href="https://github.com/tianhengzhou/myblog/blob/master/views/portfolio.ejs">Code</a>
+                            </div>
                         </div>
                         <div class="description">
                             This personal portfolio is utilizing Fullpage.js to get the vertically
@@ -211,15 +170,5 @@
         </div>
     </div>
 </div>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-64339999-3', 'auto');
-        ga('send', 'pageview');
-
-    </script>
-</body>
-</html>
+<script src="/js/resume.js"></script>
+<%- include footer %>

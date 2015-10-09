@@ -258,7 +258,20 @@ module.exports = function(app) {
       success: req.flash('success').toString(),
       error:req.flash('error').toString()});
   });
-
+  app.get('/about', function (req, res) {
+    res.render('about', {
+      title: 'About Me' ,
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error:req.flash('error').toString()});
+  });
+  app.get('/contact', function (req, res) {
+    res.render('contact', {
+      title: 'Get In Touch' ,
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error:req.flash('error').toString()});
+  });
   app.get('/u/:username', function(req,res){
     Post.getAll(req.params.username,function(err,posts){
       if (err) {
@@ -310,22 +323,6 @@ module.exports = function(app) {
         req.session.user = {name: req.user.displayName, head: "https://gravatar.com/avatar/" + req.user._json.gravatar_id + "?s=48"};
         res.redirect('/');
       });
-  app.get('/resume', function(req,res){
-    res.render('resume', {
-      title: 'Resume',
-      user: req.session.user,
-      success: req.flash('success').toString(),
-      error: req.flash('error').toString()
-    })
-  });
-  app.get('/portfolio', function(req,res){
-    res.render('portfolio',{
-          title: 'Portfolio',
-          user : req.session.user,
-          success : req.flash('success').toString(),
-          error : req.flash('error').toString()
-    });
-  });
   app.use(function (req, res) {
     res.render("404");
   });

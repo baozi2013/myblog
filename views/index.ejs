@@ -19,7 +19,7 @@
         });
         $(document).ready(function() {
             $('.main').fadeTo('slow',1);
-            $('a').click(function (event) {
+            $('a.btn').click(function (event) {
                 event.preventDefault();
                 var href = this.href;
 
@@ -45,11 +45,11 @@
     <div class="row">
         <div class="col-xs-3 text-center"><a href="/blog" class="btn btn-lg btn-link">Blog</a></div>
         <div class="col-xs-3 text-center"><a href="#" class="btn btn-lg btn-link">Projects</a></div>
-        <div class="col-xs-3 text-center"><a href="/resume" class="btn btn-lg btn-link">Resume</a></div>
-        <div class="col-xs-3 text-center"><a href="#" class="btn btn-lg btn-link">Contact</a></div>
+        <div class="col-xs-3 text-center"><a href="/about" class="btn btn-lg btn-link">About</a></div>
+        <div class="col-xs-3 text-center"><a href="/contact" class="btn btn-lg btn-link">Contact</a></div>
     </div>
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-6 text-center">
             <div ng-app="myApp">
                 <div ng-controller="customersCtrl">
                     <p>Feature Articles</p>
@@ -63,9 +63,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-6 text-center">
             <p>Feature Project</p>
-
+            <div class="col-xs-12 homepage">
+                <img src="/images/blog.jpg" alt="blog"/>
+                <a href="/project" class="btn btn-lg btn-link">A MEAN Stack Blog</a>
+            </div>
         </div>
     </div>
 </div>
