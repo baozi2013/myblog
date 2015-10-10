@@ -56,7 +56,7 @@
                     <div class="blog-title">
                         <ul class="pull-left col-xs-offset-2 ">
                             <li ng-repeat="article in articles | filter:{top: 1 }">
-                                $ <a href="/p/{{article._id}}">{{article.title}}</a>
+                                <a href="/p/{{article._id}}">$ {{article.title}}</a>
                             </li>
                         </ul>
                     </div>
