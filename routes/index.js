@@ -58,7 +58,7 @@ module.exports = function(app) {
     User.get(newUser.name, function (err, user) {
       if (err) {
         req.flash('error', err);
-        return res.redirect('/');
+        return res.redirect('/blog');
       }
       if (user) {
         req.flash('error', 'Username exist!');
@@ -73,7 +73,7 @@ module.exports = function(app) {
         }
         req.session.user = user;//用户信息存入 session
         req.flash('success', 'Registration Succeed!');
-        res.redirect('/');//注册成功后返回主页
+        res.redirect('/blog');//注册成功后返回主页
       });
     });
   });
@@ -100,7 +100,7 @@ module.exports = function(app) {
       }
       req.session.user = user;
       req.flash('success', 'Login Successful');
-      res.redirect('/');
+      res.redirect('/blog');
     });
   });
   app.get('/post', function (req, res) {
@@ -124,10 +124,10 @@ module.exports = function(app) {
     post.save(function (err) {
       if (err){
         req.flash('error',err);
-        return res.redirect('/');
+        return res.redirect('/blog');
       }
       req.flash('success', 'Post Successful!');
-      res.redirect('/');
+      res.redirect('/blog');
     });
   });
   app.get('/upload', checkLogin);
@@ -160,13 +160,13 @@ module.exports = function(app) {
   app.get('/logout', function (req, res) {
     req.session.user = null;
     req.flash('success','Logout Successful!');
-    res.redirect('/')
+    res.redirect('/blog')
   });
   app.get('/p/:_id', function(req, res){
     Post.getOne(req.params._id, function(err, post){
       if (err){
         req.flash('error', err);
-        return res.redirect('/');
+        return res.redirect('/blog');
       }
       res.render('article',{
         title: post.title,
@@ -182,7 +182,7 @@ module.exports = function(app) {
     Post.edit(req.params._id, function(err, post){
       if (err){
         req.flash("error", 'This blog does not exist');
-        return res.redirect('/');
+        return res.redirect('/blog');
       }
       res.render('edit',{
         title: post.title,
@@ -206,7 +206,7 @@ module.exports = function(app) {
       var url = encodeURI('/p/'+post._id);
       if (err){
         req.flash('error',err.toString());
-        return res.redirect('/');}
+        return res.redirect('/blog');}
       else{
         req.flash('success','Update Succeed.');
         res.redirect(url);
@@ -217,7 +217,7 @@ module.exports = function(app) {
     Post.remove(req.params._id,function(err,post){
       if (err){
         req.flash('error', err.toString());
-        return res.redirect('/');
+        return res.redirect('/blog');
       }
       else{
         req.flash('success', 'Remove Succeed');
@@ -272,11 +272,18 @@ module.exports = function(app) {
       success: req.flash('success').toString(),
       error:req.flash('error').toString()});
   });
+  app.get('/project', function (req, res) {
+    res.render('project', {
+      title: 'Projects' ,
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error:req.flash('error').toString()});
+  });
   app.get('/u/:username', function(req,res){
     Post.getAll(req.params.username,function(err,posts){
       if (err) {
         req.flash('error', err);
-        return res.redirect('/');
+        return res.redirect('/blog');
       }
       res.render('user', {
         title: req.params.username,
@@ -310,7 +317,7 @@ module.exports = function(app) {
   }), function (req, res) {
     console.log(req.user);
     req.session.user = {name: req.user.username, head: "https://gravatar.com/avatar/" + req.user._json.gravatar_id + "?s=48"};
-    res.redirect('/');
+    res.redirect('/blog');
   });
   app.get('/login/facebook', passport.authenticate('facebook'));
   app.get('/login/facebook/callback',
@@ -321,7 +328,7 @@ module.exports = function(app) {
       }), function (req,res){
         console.log(req.user);
         req.session.user = {name: req.user.displayName, head: "https://gravatar.com/avatar/" + req.user._json.gravatar_id + "?s=48"};
-        res.redirect('/');
+        res.redirect('/blog');
       });
   app.use(function (req, res) {
     res.render("404");

@@ -6,6 +6,9 @@ body {
 .active>a{
   background-color: lightgray !important;
 }
+.blog-title a{
+  font-size: 1.5em;
+}
 a {
   color: #00B7FF;
 }
