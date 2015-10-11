@@ -40,11 +40,10 @@
           <% if (locals.user){%>
           <li>
             <a title="user" type="button" class="dropdown-toggle" data-toggle="dropdown" href="/u/<%= locals.user.name%>">
-              <span class="profile-img" style="background-image: url(/images/<%=locals.user.name%>)"></span><%= locals.user.name%><span class="caret"></span>
+              <span class="profile-img" style="background-image: url('<%=locals.user.head%>&d=retro')"></span><%= locals.user.name%><span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li><a href="/post">Post</a></li>
-              <li><a href="/upload">Upload</a></li>
               <li><a href="/logout">Logout</a></li>
             </ul>
           </li>

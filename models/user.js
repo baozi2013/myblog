@@ -24,7 +24,7 @@ function User(user){
 User.prototype.save = function(callback){
     var md5 = crypto.createHash('md5'),
         email_md5 = md5.update(this.email.toLowerCase()).digest('hex'),
-        head = "http://www.gravatar.com/avatar/"+ email_md5 +"?s=48";
+        head = "http://www.gravatar.com/avatar/"+ email_md5 +"?s=32";
     var user = {
         name: this.name,
         password: this.password,

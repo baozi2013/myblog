@@ -119,7 +119,7 @@ module.exports = function(app) {
       top = 0;
     }
     var currentUser = req.session.user,
-        category = req.body.category
+        category = req.body.category,
         post = new Post(currentUser.name, req.body.title, req.body.content,top,category);
     post.save(function (err) {
       if (err){
