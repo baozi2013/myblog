@@ -1,5 +1,36 @@
 <%- include header %>
 <div class="container">
     <h1 class="writer"><%= title%></h1>
+    <div class="main">
+        <div class="row project-items">
+            <div class="col-xs-offset-1 col-xs-4 homepage">
+                <img src="/images/blog.jpg" alt="blog"/>
+            </div>
+            <div class="col-xs-6 project-description">
+                <h2>THZ Blog</h2>
+                <p>
+                    The thzlab blog is a project implements Angularjs as FrontEnd, Node.js
+                    and Express.js as BackEndserver and MongoDB as database.Also it implements
+                    Passport to support third party logins.
+                </p>
+                <a class="btn btn-primary" href="http://thzlab.herokuapp.com/blog">Demo</a>
+                <a class="btn btn-primary" href="https://github.com/tianhengzhou/myblog/blob/master/views/blog.ejs">Code</a>
+            </div>
+        </div>
+        <div class="row project-items">
+            <div class="col-xs-offset-1 col-xs-4 homepage">
+                <img src="/images/resume.jpg" alt="resume"/>
+            </div>
+            <div class="col-xs-6 project-description">
+                <h2>Personal Resume</h2>
+                <p>
+                    This static web resume is using HTML, Javascript and CSS.
+                </p>
+                <a class="btn btn-primary" href="http://thzlab.herokuapp.com/about">Demo</a>
+                <a class="btn btn-primary" href="https://github.com/tianhengzhou/myblog/blob/master/views/about.ejs">Code</a>
+            </div>
+        </div>
+    </div>
+
 </div>
 <%- include footer %>

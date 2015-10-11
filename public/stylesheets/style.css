@@ -66,6 +66,21 @@ ul{
 .main{
   opacity: 0;
 }
+.profile-img{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-size: 32px 32px;
+  display: inline-block;
+  position: absolute;
+  left: -20px;
+  top: 10px;
+  background-color: grey;
+}
+.thanks{
+  font-size: 2em;
+  font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+}
 a.btn {
   margin-top: 0.3em;
   margin-bottom: 0.3em;
@@ -98,6 +113,13 @@ a.btn {
   position: relative;
   bottom: -0.75em;
   right: 0.3em;
+}
+.project-items{
+  margin-top: 3%;
+}
+.project-description p{
+ font-size: 1em;
+  line-height: 1.5em;
 }
 i{
   margin-right: 0.5em;

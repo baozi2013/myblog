@@ -30,9 +30,14 @@ $el.text('|');
 $(function(){
     $(".type").typed({
         strings: ["Tianheng Tim Zhou <br/> Web Developer"],
-        typeSpeed: 10,
-        showCursor: false
+        typeSpeed: 30,
+        showCursor: false,
+        callback: function() {
+            fadeMain()
+        }
     });
 });
-
+function fadeMain(){
+    $('.main').fadeTo('slow',1)
+}
 

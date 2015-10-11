@@ -279,6 +279,13 @@ module.exports = function(app) {
       success: req.flash('success').toString(),
       error:req.flash('error').toString()});
   });
+  app.get('/thanks', function (req, res) {
+    res.render('thanks', {
+      title: 'Thank You' ,
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error:req.flash('error').toString()});
+  });
   app.get('/u/:username', function(req,res){
     Post.getAll(req.params.username,function(err,posts){
       if (err) {
