@@ -35,12 +35,24 @@
         <li class="<%= title == 'About Me' ? 'active' : ''%>"><a title="about me" href="/about">About</a></li>
         <li class="<%= title == 'Get In Touch' ? 'active' : ''%>"><a title="contact" href="/contact">Contact</a></li>
       </ul>
-      <ul class="nav navbar-nav pull-right">
-        <% if (locals.user){%>
-        <li class="<%= title ==  locals.user.name ? 'active' : ''%>"><a title="post" href="/u/<%= locals.user.name%>"><%= locals.user.name%></a></li>
-        <li class="<%= title == 'Post' ? 'active' : ''%>"><a title="post" href="/post">Post</a></li>
-        <li class="<%= title == 'Upload' ? 'active' : ''%>"><a title="upload" href="/upload">Upload</a></li>
-        <li class="<%= title == 'Logout' ? 'active' : ''%>"><a title="logout" href="/logout">Logout</a></li>
+      <div class="dropdown">
+        <ul class="nav navbar-nav pull-right">
+          <% if (locals.user){%>
+          <li>
+            <a title="user" type="button" class="dropdown-toggle" data-toggle="dropdown" href="/u/<%= locals.user.name%>">
+              <%= locals.user.name%><span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/post">Post</a></li>
+              <li><a href="/upload">Upload</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </li>
+          </ul>
+        </div>
+        <!--<li class="<%= title == 'Post' ? 'active' : ''%>"><a title="post" href="/post">Post</a></li>-->
+        <!--<li class="<%= title == 'Upload' ? 'active' : ''%>"><a title="upload" href="/upload">Upload</a></li>-->
+        <!--<li class="<%= title == 'Logout' ? 'active' : ''%>"><a title="logout" href="/logout">Logout</a></li>-->
         <%} else{%>
         <li class="<%= title == 'Login' ? 'active' : ''%>"><a title="login" href="/login">Login</a></li>
         <li class="<%= title == 'Register' ? 'active' : ''%>"><a title="register" href="/reg">Register</a></li>
