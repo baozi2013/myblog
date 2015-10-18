@@ -3,6 +3,7 @@
   <head>
     <title>Blog</title>
     <meta property="qc:admins" content="35003737402441260527351006375" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script type="text/javascript" src="/js/nicedit.js"></script>
     <script type="text/javascript">
@@ -19,24 +20,43 @@
     <script src="/js/dirPagination.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/animation.js"></script>
-    <script>
-      $('.close').click(function(){
-        $(this).parent().removeClass('in');
-      });
-    </script>
   </head>
   <body>
   <header class="nav navbar-default navbar-fixed-top">
     <div class="container">
-      <ul class="nav navbar-nav">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Menu</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav tiny-bar">
+          <li class="menuItem <%= title == 'Home' ? 'active' : ''%>"><a href="/">Home</a></li>
+          <li class="menuItem <%= title == 'Blog' ? 'active' : ''%>"><a href="/blog">Blog</a></li>
+          <li class="menuItem <%= title == 'Projects' ? 'active' : ''%>"><a href="/project">Projects</a></li>
+          <li class="menuItem <%= title == 'About Me' ? 'active' : ''%>"><a href="/about">About</a></li>
+          <li class="menuItem <%= title == 'Get In Touch' ? 'active' : ''%>"><a href="/contact">Contact</a></li>
+          <% if (locals.user){%>
+          <li class="menuItem <%= title == 'Post' ? 'active' : ''%>"><a href="/post">Post</a></li>
+          <li><a href="/logout">Logout</a></li>
+          <%} else{%>
+          <li class="menuItem <%= title == 'Login' ? 'active' : ''%>"><a title="login" href="/login">Login</a></li>
+          <li class="menuItem <%= title == 'Register' ? 'active' : ''%>"><a title="register" href="/reg">Register</a></li>
+          <% } %>
+        </ul>
+      </div>
+      <ul class="nav navbar-nav large-bar">
         <li class="<%= title == 'Home' ? 'active' : ''%>"><a title="home" href="/">Home</a></li>
         <li class="<%= title == 'Blog' ? 'active' : ''%>"><a title="archive" href="/blog">Blog</a></li>
         <li class="<%= title == 'Projects' ? 'active' : ''%>"><a title="about me" href="/project">Projects</a></li>
         <li class="<%= title == 'About Me' ? 'active' : ''%>"><a title="about me" href="/about">About</a></li>
         <li class="<%= title == 'Get In Touch' ? 'active' : ''%>"><a title="contact" href="/contact">Contact</a></li>
       </ul>
-      <div class="dropdown">
-        <ul class="nav navbar-nav pull-right">
+      <div class="dropdown large-bar">
+        <ul class="nav navbar-nav navbar-right">
           <% if (locals.user){%>
           <li>
             <a title="user" type="button" class="dropdown-toggle" data-toggle="dropdown" href="/u/<%= locals.user.name%>">

@@ -7,7 +7,7 @@
                 <div ng-repeat="post in posts" ng-cloak>
                     <div ng-if="post._id == postid">
 
-                        <div class="col-xs-offset-1 col-xs-11">
+                        <div class="col-sm-offset-1 col-xs-11">
                             <p class="info">
                                 Author: <a ng-href="/p/{{post._id}}">{{post.name}}</a>
                                 Date: {{post.time}}
@@ -22,10 +22,10 @@
                             <% } %>
                         </div>
                         <div class="row">
-                            <div class="col-xs-offset-1 col-xs-2">
+                            <div class="col-sm-offset-1 col-xs-12 col-sm-4">
                                 <a class="btn btn-link" ng-href="/p/{{posts[$index-1]._id}}" ng-show="!$first">Previous: {{posts[$index-1].title}}</a>
                             </div>
-                            <div class="col-xs-offset-6 col-xs-2">
+                            <div class="col-sm-offset-3 col-xs-12 col-sm-4">
                                 <a class="btn btn-link" ng-href="/p/{{posts[$index+1]._id}}" ng-show="!$last">Next: {{posts[$index+1].title}}</a>
                             </div>
                         </div>

@@ -32,32 +32,34 @@ ul{
   position: relative;
   top:100%
 }
+@media (min-width: 768px){
+  .navbar-header {
+    display: none;
+  }
+  .tiny-bar{
+    display: none;
+  }
+  .tiny-search{
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+ .large-bar{
+   display: none;
+ }
+  .large-sidebar{
+    display: none;
+  }
+  .large-display{
+    display: none;
+  }
+}
 .type{
-  font-size: 5em;
+  font-size: 3em;
   line-height: 2em;
   font-weight: bold;
   text-align: center;
-}
-.type2{
-  font-size: 5em;
-  line-height: 2em;
-  font-weight: bold;
-  text-align: center;
-}
-.typed-cursor{
-  opacity: 1;
-  -webkit-animation: blink 0.7s infinite;
-  -moz-animation: blink 0.7s infinite;
-  animation: blink 0.7s infinite;
-}
-.homepage img{
-  width: 400px;
-  height: 300px;
-  display: block;
-  position: relative;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%);
 }
 
 .info {
