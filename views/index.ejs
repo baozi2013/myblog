@@ -5,34 +5,8 @@
     <meta property="qc:admins" content="35003737402441260527351006375" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
     <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css' />
     <link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' />
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/js/typed.js"></script>
-    <script src="/js/dirPagination.js"></script>
-    <script src="/js/script.js"></script>
-    <script src="/js/animation.js"></script>
-    <script>
-        $('.close').click(function(){
-            $(this).parent().removeClass('in');
-        });
-        $(document).ready(function() {
-            $('a.btn').click(function (event) {
-                event.preventDefault();
-                var href = this.href;
-                $('.container').animate({
-                            opacity: '0'
-                        }, 400, function () {
-                            //want to use callback function to load the page....
-                            window.location = href;
-                        }
-                );
-            });
-        });
-    </script>
-
 </head>
 <body>
 <div class="container">
@@ -72,7 +46,31 @@
             </div>
         </div>
     </div>
-
 </div>
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/dirPagination.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/animation.js"></script>
+<script>
+    $('.close').click(function(){
+        $(this).parent().removeClass('in');
+    });
+    $(document).ready(function() {
+        $('a.btn').click(function (event) {
+            event.preventDefault();
+            var href = this.href;
+            $('.container').animate({
+                        opacity: '0'
+                    }, 400, function () {
+                        //want to use callback function to load the page....
+                        window.location = href;
+                    }
+            );
+        });
+    });
+</script>
 </body>
 </html>
