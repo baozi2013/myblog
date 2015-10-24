@@ -7,13 +7,13 @@ var callback = function(){
         newWidth = $(this).parent().width() * $(this).data('percent');
         $(this).width(0);
         $(this).animate({
-            width: newWidth,
+            width: newWidth
         }, 1000);
     });
     $('.icons-red').each(function(){
         height = $(this).height();
         $(this).animate({
-            height: 14,
+            height: 14
         }, 2000);
     });
 };

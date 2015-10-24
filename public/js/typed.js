@@ -31,7 +31,7 @@
 
         // chosen element to manipulate text
         this.el = $(el);
-
+        
         // options
         this.options = $.extend({}, $.fn.typed.defaults, options);
 
