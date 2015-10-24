@@ -4,8 +4,8 @@
     <title>Blog</title>
     <meta property="qc:admins" content="35003737402441260527351006375" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/style.min.css' />
+    <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.min.css' />
     <link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' />
 </head>
 <body>
@@ -48,16 +48,55 @@
     </div>
 </div>
 <script src="/bower_components/angular/angular.min.js"></script>
-<script src="/bower_components/jquery/dist/jquery.js"></script>
-<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="/js/typed.js"></script>
-<script src="/js/dirPagination.js"></script>
-<script src="/js/script.js"></script>
-<script src="/js/animation.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/js/typed.min.js"></script>
+<script src="/js/dirPagination.min.js"></script>
+<script src="/js/script.min.js"></script>
 <script>
     $('.close').click(function(){
         $(this).parent().removeClass('in');
     });
+    /**
+     * Created by tianhengzhou on 10/6/15.
+     */
+    $(document).ready(function(){var $el = $('.writer'),
+            txt = $el.text(),
+            txtLen = txt.length,
+            timeOut,
+            char = 0;
+
+        $el.text('|');
+        (function typeIt() {
+            var humanize = Math.round(Math.random() * (100 - 30));
+            timeOut = setTimeout(function() {
+                char++;
+                var type = txt.substring(0, char);
+                $el.text(type + '|');
+                typeIt();
+
+                if (char == txtLen) {
+                    $el.text($el.text().slice(0, -1)); // remove the '|'
+                    clearTimeout(timeOut);
+                    $('.main').fadeTo('slow',1)
+                }
+            }, humanize);
+        }());});
+
+
+    $(function(){
+        $(".type").typed({
+            strings: ["Tianheng Tim Zhou <br/> Web Developer"],
+            typeSpeed: 30,
+            showCursor: false,
+            callback: function() {
+                fadeMain()
+            }
+        });
+    });
+    function fadeMain(){
+        $('.main').fadeTo('slow',1)
+    }
     $(document).ready(function() {
         $('a.btn').click(function (event) {
             event.preventDefault();
