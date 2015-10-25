@@ -1,5 +1,3 @@
-# myblog
-my blog with mean stack
 # How to deploy it
 1. Change directory to project folder.
 2. Make sure you have Node.js installed in your server or workstation.
