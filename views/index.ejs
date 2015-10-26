@@ -4,9 +4,9 @@
     <title>Blog</title>
     <meta property="qc:admins" content="35003737402441260527351006375" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/stylesheets/style.min.css' />
-    <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.min.css' />
-    <link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' />
+    <!--<link rel='stylesheet' href='/stylesheets/style.min.css' />-->
+    <!--<link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.min.css' />-->
+    <!--<link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' />-->
 </head>
 <body>
 <div class="container">
@@ -53,6 +53,13 @@
 <script src="/js/typed.min.js"></script>
 <script src="/js/dirPagination.min.js"></script>
 <script src="/js/script.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("head").append($("<link rel='stylesheet' href='/stylesheets/style.min.css' type='text/css' media='screen' />"))
+                .append($("<link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.min.css' type='text/css' media='screen' />"))
+                .append($("<link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' type='text/css' media='screen' />"));
+    });
+</script>
 <script>
     $('.close').click(function(){
         $(this).parent().removeClass('in');
