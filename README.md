@@ -5,5 +5,5 @@
 4. Type node app.js
 
 # General information of this project
-1. This personal blog is built by AngularJs for Front End, ExpressJs and NodeJs for backend server, MongoDB for database.
+1. This personal blog is built by AngularJs for Front End, ExpressJs and NodeJs for backend service logic, MongoDB for database.
 2. The link for a demo of this project: www.tianhengzhou.com
