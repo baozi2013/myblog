@@ -19,9 +19,6 @@ h1, h2, h4{
   padding-bottom: 0.5em;
   border-bottom: 1px solid lightgray;
 }
-ul{
-  list-style-type: none;
-}
 .centralize{
   position: relative;
   left: 50%;

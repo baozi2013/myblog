@@ -39,25 +39,11 @@
             <div class="col-xs-6 col-sm-3 text-center"><a href="/contact" class="btn btn-lg btn-link">Contact</a></div>
         </div>
         <div class="row large-display">
-            <div class="col-xs-12 col-sm-6">
-                <div ng-app="myApp">
-                    <div ng-controller="customersCtrl" class="text-center">
-                        <h3>Feature Articles</h3>
-                        <div class="blog-title">
-                            <ul>
-                                <li ng-repeat="article in articles | filter:{top: 1 }">
-                                    <a href="/p/{{article._id}}">{{article.title}}</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 text-center">
+            <div class="col-xs-12 col-sm-offset-3 col-sm-6 text-center">
                 <h3>Feature Project</h3>
                 <div class="col-xs-12">
-                    <img class="img-responsive" src="/images/blog.jpg" alt="blog"/>
-                    <a href="/project" class="btn btn-lg btn-link">A MEAN Stack Blog</a>
+                    <img class="img-responsive" src="/images/yelpsheet.jpg" alt="yelpsheet"/>
+                    <a href="http://yelpsheet.herokuapp.com" class="btn btn-lg btn-link">Yelp Sheet</a>
                 </div>
             </div>
         </div>
