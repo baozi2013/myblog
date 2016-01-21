@@ -1,3 +1,4 @@
+'use strict'
 var express = require('express');
 var passport = require('passport');
 var router = express.Router();
@@ -12,7 +13,7 @@ var crypto = require('crypto'),
 
 /*module.exports = router;*/
 
-module.exports = function(app) {
+module.exports = function (app) {
   app.get('/', function (req, res) {
     Post.getTen(function (err, posts) {
       //console.log(posts);
@@ -41,14 +42,14 @@ module.exports = function(app) {
         password = req.body.password,
         password_re = req.body['password-repeat'];
     //检验用户两次输入的密码是否一致
-    if (password_re != password) {
+    if (password_re !== password) {
       req.flash('error', 'Password mismatch!');
-      console.log('Password mismatch!')
+      console.log('Password mismatch!');
       return res.redirect('/reg');//返回注册页
     }
     //生成密码的 md5 值
-    var md5 = crypto.createHash('md5'),
-        password = md5.update(req.body.password).digest('hex');
+    var md5 = crypto.createHash('md5');
+    password = md5.update(req.body.password).digest('hex');
     var newUser = new User({
       name: name,
       password: password,
@@ -62,7 +63,7 @@ module.exports = function(app) {
       }
       if (user) {
         req.flash('error', 'Username exist!');
-        console.log('Username exist!')
+        console.log('Username exist!');
         return res.redirect('/reg');//返回注册页
       }
       //如果不存在则新增用户
@@ -226,30 +227,38 @@ module.exports = function(app) {
     })
   });
   app.get('/data',function(req,res){
-    options = {
+    var options = {
       sort: {
         top: -1,
         time_for_sort: -1
       }};
     Post.getAll(null, options,function (err, posts) {
-      //console.log(posts);
-      //console.log(req.session.user)
       res.send(posts);})
   });
   app.get('/articleData',function(req,res){
-    options = {
+    var options = {
       sort: {
         time_for_sort: -1
       }};
     Post.getAll(null, options,function (err, posts) {
-      //console.log(posts);
-      //console.log(req.session.user)
       res.send(posts);})
   });
   app.get('/categories',function(req,res){
     Post.getcategories(function(err,categories){
       res.json(categories);
     })
+  });
+  app.get('/userimage/:name',function(req,res){
+    User.getimage(req.params.name, function(err,userimages){
+      res.json(userimages);
+    })
+  });
+  app.get('/blogt', function (req, res) {
+    res.render('blogtmp', {
+      title: 'Blog' ,
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error:req.flash('error').toString()});
   });
   app.get('/blog', function (req, res) {
     res.render('blog', {

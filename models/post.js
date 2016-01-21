@@ -24,7 +24,7 @@ function Post(name,title,content,top,category){
     this.category = category;
 }
 
-Post.prototype.save = function(callback){
+Post.prototype.save = function (callback) {
     var date = new Date();
     var m_names = new Array("Jan", "Feb", "Mar",
         "Apr", "May", "Jun", "Jul", "Aug", "Sep",
@@ -74,29 +74,29 @@ Post.getAll = function (name, options, callback) {
     }
 };
 
-Post.getOne = function(_id, callback){
-    postModel.findOneAndUpdate({_id: _id}, {$inc: {pv: 1}}, function(err,post){
-        if (err){
+Post.getOne = function (_id, callback) {
+    postModel.findOneAndUpdate({_id: _id}, {$inc: {pv: 1}}, function (err, post) {
+        if (err) {
             return callback(err);
         }
         callback(null,post);
-    })
+    });
 };
-Post.getOnecategory = function(category, callback){
-    postModel.find({category: category}, function(err,post){
-        if (err){
+Post.getOnecategory = function (category, callback) {
+    postModel.find({category: category}, function (err, post) {
+        if (err) {
             return callback(err);
         }
-        callback(null,post);
-    })
+        callback(null, post);
+    });
 };
-Post.edit = function(_id, callback){
+Post.edit = function (_id, callback) {
   postModel.findOne({_id: _id},function(err,post){
       if(err){
           return callback(err);
       }
       callback(null,post);
-  })
+  });
 };
 
 Post.update = function(_id, newpost, callback){
