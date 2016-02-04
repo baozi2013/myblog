@@ -1,65 +1,172 @@
-<%- include header.ejs%>
-<div class="container">
-    <h1 class="writer"><%= title%></h1>
-    <div ng-app="myApp" class="main">
-    <div ng-controller="customersCtrl">
-        <div class="row">
-            <div class="col-xs-12 tiny-search">
-                <p><strong>Search Title</strong></p>
-                <input type="text" ng-model="query" id="search" class="form-control" placeholder="Search text"/>
-            </div>
-            <div class="col-md-offset-1 col-xs-12 col-sm-7">
-                <div dir-paginate="post in posts | filter:{title: query} | filter:{category: categoryq} | itemsPerPage: 3 | orderBy: sortType:sortReverse" current-page="currentPage" class="post" ng-cloak>
-                    <p>
-                    <h2>
-                        <a href="/p/{{post._id}}">{{post.title}}</a>
-                    </h2>
-                    </p>
-                    <p class="info">
-                        {{post.time}}
-                        <span> by </span>
-                        <a href="/u/{{post.name}}">{{post.name}}</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog</title>
 
-                    </p>
-                    <p>
-                        Page View: {{post.pv}}
-                        <span class="label label-danger">
-                            <a href="/{{post.category}}" style="color:white">{{post.category}}</a>
-                        </span>
-                    </p>
-                    <div ng-bind-html="post.content | sanitize"></div>
-                </div>
-                <div class="text-center">
-                    <dir-pagination-controls boundary-links="true" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.css" />
+    <link rel="stylesheet" href="/stylesheets/blog.css">
+</head>
+<body>
+
+<div class="blog mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <div class="blog__header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+            <span class="desktop-title mdl-layout-title">
+                <img class="android-logo-image" src="/images/thzlab.png">
+            </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+                    <i class="material-icons">search</i>
+                </label>
+                <div class="mdl-textfield__expandable-holder">
+                    <input class="mdl-textfield__input" type="text" id="search-field">
                 </div>
             </div>
-            <div class="col-xs-offset-1 col-sm-3 large-sidebar">
-                <div class="row">
-                    <p><strong>Search Title</strong></p>
-                    <div class="col-xs-10">
-                        <input type="text" ng-model="query" id="search" class="form-control" placeholder="Search text"/>
+            <span class="mobile-title mdl-layout-title">
+                <img class="android-logo-image" src="/images/thzlab.png">
+            </span>
+            <!-- Navigation -->
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Home</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/blog">Blog</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/project">Project</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/about">About Me</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/contact">Contact</a>
+                <% if (!locals.user){%>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/login">Login</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/reg">Register</a>
+                <%} else{%>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/post">Post</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/logout">Logout</a>
+                <% } %>
+            </nav>
+        </div>
+    </div>
+
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">
+          <img class="android-logo-image" src="/images/thzlab.png">
+        </span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="/">Home</a>
+            <a class="mdl-navigation__link" href="/blog">Blog</a>
+            <a class="mdl-navigation__link" href="/project">Project</a>
+            <a class="mdl-navigation__link" href="/about">About Me</a>
+            <a class="mdl-navigation__link" href="/contact">Contact</a>
+            <% if (!locals.user){%>
+            <a class="mdl-navigation__link" href="/login">Login</a>
+            <a class="mdl-navigation__link" href="/reg">Register</a>
+            <%} else{%>
+            <a class="mdl-navigation__link" href="/post">Post</a>
+            <a class="mdl-navigation__link" href="/logout">Logout</a>
+            <% } %>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+
+        <div ng-app="myApp" class="main">
+            <div ng-controller="customersCtrl">
+                <div class="blog__posts mdl-grid">
+                    <div class="mdl-card mdl-cell mdl-cell--12-col" ng-repeat="post in posts">
+                        <div class="mdl-card__media mdl-color-text--grey-50  mdl-color--teal-100">
+                            <h3><a href="/p/{{post._id}}">{{post.title}}</a></h3>
+                        </div>
+                        <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+                            <div class="minilogo" style="background-image: url('{{post.image_url}}')">
+                            </div>
+                            <div>
+                                <strong><a href="/u/{{post.name}}">{{post.name}}</a></strong>
+                            <span>
+                                {{post.time}}
+                                Page View: {{post.pv}}
+                                <a href="/{{post.category}}">{{post.category}}</a>
+                            </span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <p><strong>Categories</strong></p>
-                    <ul>
-                        <li>
-                            <a ng-click="categoryquery('')" href="#">All</a>
-                        </li>
-                        <li ng-repeat="category in categories">
-                            <a ng-click="categoryquery(category)" href="#">{{ category }}</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="row">
-                    <p><strong>Latest Article</strong></p>
-                    <ul>
-                        <li ng-repeat="article in articles | orderBy: time"><a href="/p/{{article._id}}">{{article.title}}</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer--left-section">
+                <button class="mdl-mini-footer--social-btn social-btn social-btn__linkedin" onclick="location.href='https://www.linkedin.com/in/tianhengzhou'">
+                </button>
+            </div>
+        </footer>
+    </main>
+    <div class="mdl-layout__obfuscator"></div>
 </div>
-</div>
-<%- include footer.ejs%>
+<script src="/bower_components/material-design-lite/material.min.js"></script>
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', ["$scope", '$http', function ($scope, $http) {
+        $scope.currentPage = 1;
+        $scope.pageSize = 10;
+        $http.get('/data').success(function (data) {
+            $scope.posts = data;
+            $scope.posts.forEach(function(post){
+                $http.get('/userimage/'+post.name).success(function (data) {
+                    post.image_url = data;
+                })
+            })
+            console.log($scope.posts)
+        });
+        $http.get('/userimage').success(function (data) {
+            $scope.userimages = data;
+        });
+    }]);
+    app.filter("sanitize", ['$sce', function ($sce) {
+        return function (htmlCode) {
+            return $sce.trustAsHtml(htmlCode);
+        };
+    }]);
+
+</script>
+</body>
+<script>
+    Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
+        var link = el.querySelector('a');
+        if(!link) {
+            return;
+        }
+        var target = link.getAttribute('href');
+        if(!target) {
+            return;
+        }
+        el.addEventListener('click', function() {
+            location.href = target;
+        });
+    });
+</script>
+</html>

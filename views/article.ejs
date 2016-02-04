@@ -1,41 +1,138 @@
-<%- include header %>
-<div class="container">
-    <h1 class="writer"><%= title %></h1>
-        <div ng-app="myApp" class="main">
-            <div ng-controller="customersCtrl" ng-init="postid = '<%=postId%>'">
-                <div class="row">
-                <div ng-repeat="post in posts" ng-cloak>
-                    <div ng-if="post._id == postid">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog</title>
 
-                        <div class="col-sm-offset-1 col-xs-11">
-                            <p class="info">
-                                Author: <a ng-href="/p/{{post._id}}">{{post.name}}</a>
-                                Date: {{post.time}}
-                                <span class="label label-danger">{{post.category}}</span>
-                            </p>
-                            <div ng-bind-html="post.content | sanitize"></div>
-                            <% if (locals.user) {%>
-                            <div ng-init="user = '<%- locals.user.name%>'" class="text-center">
-                                <a ng-if="post.name == user" ng-href="/edit/{{post._id}}" class="btn btn-default">Edit</a>
-                                <a ng-if="post.name == user" ng-href="/remove/{{post._id}}" class="btn btn-default">Remove</a>
-                            </div>
-                            <% } %>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-offset-1 col-xs-12 col-sm-4">
-                                <a class="btn btn-link" ng-href="/p/{{posts[$index-1]._id}}" ng-show="!$first">Previous: {{posts[$index-1].title}}</a>
-                            </div>
-                            <div class="col-sm-offset-3 col-xs-12 col-sm-4">
-                                <a class="btn btn-link" ng-href="/p/{{posts[$index+1]._id}}" ng-show="!$last">Next: {{posts[$index+1].title}}</a>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.css" />
+    <link rel="stylesheet" href="/stylesheets/blog.css">
+</head>
+<body>
+
+<div class="blog mdl-layout mdl-js-layout mdl-layout--fixed-header" ng-app="myApp">
+    <div class="blog__header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+            <span class="desktop-title mdl-layout-title">
+                <img class="android-logo-image" src="/images/thzlab.png">
+            </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+                    <i class="material-icons">search</i>
+                </label>
+                <div class="mdl-textfield__expandable-holder">
+                    <input class="mdl-textfield__input" type="text" id="search-field">
                 </div>
             </div>
+            <span class="mobile-title mdl-layout-title">
+                <img class="android-logo-image" src="/images/thzlab.png">
+            </span>
+            <!-- Navigation -->
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Home</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/blog">Blog</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/project">Project</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/about">About Me</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/contact">Contact</a>
+                <% if (!locals.user){%>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/login">Login</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/reg">Register</a>
+                <%} else{%>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/post">Post</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/logout">Logout</a>
+                <% } %>
+            </nav>
         </div>
-            <%- include comment %>
+    </div>
 
-        </div>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">
+          <img class="android-logo-image" src="/images/thzlab.png">
+        </span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="/">Home</a>
+            <a class="mdl-navigation__link" href="/blog">Blog</a>
+            <a class="mdl-navigation__link" href="/project">Project</a>
+            <a class="mdl-navigation__link" href="/about">About Me</a>
+            <a class="mdl-navigation__link" href="/contact">Contact</a>
+            <% if (!locals.user){%>
+            <a class="mdl-navigation__link" href="/login">Login</a>
+            <a class="mdl-navigation__link" href="/reg">Register</a>
+            <%} else{%>
+            <a class="mdl-navigation__link" href="/post">Post</a>
+            <a class="mdl-navigation__link" href="/logout">Logout</a>
+            <% } %>
+        </nav>
+    </div>
+        <main class="mdl-layout__content" ng-controller="customersCtrl" ng-init="postid = '<%=postId%>'">
+            <div class="blog__posts mdl-grid" ng-repeat="post in posts" ng-if="post._id == postid" ng-cloak>
+                <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+                    <div class="mdl-card__media mdl-color-text--grey-50 mdl-color--teal-100">
+                        <h3>{{post.title}}</h3>
+                    </div>
+                    <div class="mdl-color-text--grey-700 mdl- mdl-card__supporting-text meta">
+                        <div class="minilogo" style="background-image: url('{{post.image_url}}')"></div>
+                        <div>
+                            <strong>{{post.name}}</strong>
+                            <span>{{post.time}}</span>
+                        </div>
+                        <div class="section-spacer"></div>
+                    </div>
+                    <div class="mdl-color-text--grey mdl-card__supporting-text">
+                        <p ng-bind-html="post.content | sanitize"></p>
+                    </div>
+                    <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments">
+                        <%- include comment %>
+                    </div>
+                </div>
 
-</div>
+                <nav class="demo-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+                    <a ng-href="/p/{{posts[$index-1]._id}}" ng-show="!$first" class="demo-nav__button">
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                            <i class="material-icons">arrow_back</i>
+                        </button>
+                        Newer
+                    </a>
+                    <div class="section-spacer"></div>
+                    <a ng-href="/p/{{posts[$index+1]._id}}" ng-show="!$last" class="demo-nav__button">
+                        Older
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                            <i class="material-icons">arrow_forward</i>
+                        </button>
+                    </a>
+                </nav>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer--left-section">
+                    <button class="mdl-mini-footer--social-btn social-btn social-btn__linkedin" onclick="location.href='https://www.linkedin.com/in/tianhengzhou'">
+                    </button>
+                </div>
+            </footer>
+        </main>
+
 <%- include footer %>

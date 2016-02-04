@@ -10,9 +10,9 @@ var user = require('./models/user');
 var config = require('./models/config').dev;
 var settings = require('./settings');
 var app = express();
-var passport = require('passport')
-    , GithubStrategy = require('passport-github').Strategy
-    ,FacebookStrategy = require('passport-facebook').Strategy;
+var passport = require('passport'),
+    GithubStrategy = require('passport-github').Strategy,
+    FacebookStrategy = require('passport-facebook').Strategy;
 var flash = require('connect-flash');
 var multer = require('multer');
 var methodOverride = require('method-override');
@@ -62,7 +62,6 @@ app.use(session({
 
 routes(app);
 app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + app.get('port'));
 });
 app.use(passport.initialize());
 passport.use(new GithubStrategy({

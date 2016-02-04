@@ -1,82 +1,91 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Blog</title>
-    <meta property="qc:admins" content="35003737402441260527351006375" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/stylesheets/style.min.css' />
-    <link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.min.css' />
-    <link rel='stylesheet' href='/bower_components/fontawesome/css/font-awesome.min.css' />
-  </head>
-  <body>
-  <header class="nav navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Menu</a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav tiny-bar">
-          <li class="menuItem <%= title == 'Home' ? 'active' : ''%>"><a href="/">Home</a></li>
-          <li class="menuItem <%= title == 'Blog' ? 'active' : ''%>"><a href="/blog">Blog</a></li>
-          <li class="menuItem <%= title == 'Projects' ? 'active' : ''%>"><a href="/project">Projects</a></li>
-          <li class="menuItem <%= title == 'About Me' ? 'active' : ''%>"><a href="/about">About</a></li>
-          <li class="menuItem <%= title == 'Get In Touch' ? 'active' : ''%>"><a href="/contact">Contact</a></li>
-          <% if (locals.user){%>
-          <li class="menuItem <%= title == 'Post' ? 'active' : ''%>"><a href="/post">Post</a></li>
-          <li><a href="/logout">Logout</a></li>
-          <%} else{%>
-          <li class="menuItem <%= title == 'Login' ? 'active' : ''%>"><a title="login" href="/login">Login</a></li>
-          <li class="menuItem <%= title == 'Register' ? 'active' : ''%>"><a title="register" href="/reg">Register</a></li>
-          <% } %>
-        </ul>
-      </div>
-      <ul class="nav navbar-nav large-bar">
-        <li class="<%= title == 'Home' ? 'active' : ''%>"><a title="home" href="/">Home</a></li>
-        <li class="<%= title == 'Blog' ? 'active' : ''%>"><a title="archive" href="/blog">Blog</a></li>
-        <li class="<%= title == 'Projects' ? 'active' : ''%>"><a title="about me" href="/project">Projects</a></li>
-        <li class="<%= title == 'About Me' ? 'active' : ''%>"><a title="about me" href="/about">About</a></li>
-        <li class="<%= title == 'Get In Touch' ? 'active' : ''%>"><a title="contact" href="/contact">Contact</a></li>
-      </ul>
-      <div class="dropdown large-bar">
-        <ul class="nav navbar-nav navbar-right">
-          <% if (locals.user){%>
-          <li>
-            <a title="user" type="button" class="dropdown-toggle" data-toggle="dropdown" href="/u/<%= locals.user.name%>">
-              <span class="profile-img" style="background-image: url('<%=locals.user.head%>&d=retro')"></span><%= locals.user.name%><span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="/post">Post</a></li>
-              <li><a href="/logout">Logout</a></li>
-            </ul>
-          </li>
-          </ul>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog</title>
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <link rel="shortcut icon" href="images/favicon.ico">
+
+  <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+  <!--
+  <link rel="canonical" href="http://www.example.com/">
+  -->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.css" />
+  <link rel="stylesheet" href="/stylesheets/blog.css">
+</head>
+<body>
+
+<div class="blog mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <div class="blog__header mdl-layout__header mdl-layout__header--waterfall">
+    <div class="mdl-layout__header-row">
+            <span class="desktop-title mdl-layout-title">
+                <img class="android-logo-image" src="/images/thzlab.png">
+            </span>
+      <!-- Add spacer, to align navigation to the right in desktop -->
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+        <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+          <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" id="search-field">
         </div>
-        <!--<li class="<%= title == 'Post' ? 'active' : ''%>"><a title="post" href="/post">Post</a></li>-->
-        <!--<li class="<%= title == 'Upload' ? 'active' : ''%>"><a title="upload" href="/upload">Upload</a></li>-->
-        <!--<li class="<%= title == 'Logout' ? 'active' : ''%>"><a title="logout" href="/logout">Logout</a></li>-->
+      </div>
+            <span class="mobile-title mdl-layout-title">
+                <img class="android-logo-image" src="/images/thzlab.png">
+            </span>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Home</a>
+        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/blog">Blog</a>
+        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/project">Project</a>
+        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/about">About Me</a>
+        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/contact">Contact</a>
+        <% if (!locals.user){%>
+        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/login">Login</a>
+        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/reg">Register</a>
         <%} else{%>
-        <li class="<%= title == 'Login' ? 'active' : ''%>"><a title="login" href="/login">Login</a></li>
-        <li class="<%= title == 'Register' ? 'active' : ''%>"><a title="register" href="/reg">Register</a></li>
+        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/post">Post</a>
+        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/logout">Logout</a>
         <% } %>
-      </ul>
+      </nav>
     </div>
+  </div>
 
-  </header>
-  <% if (locals.success){ %>
-    <div id="success-alert" class="alert alert-success fade in">
-      <a class="close" data-dismiss="alert" herf="#" aria-hidden="true">&times;</a>
-      <%= locals.success %>
-    </div>
-  <% }%>
-  <% if (locals.error) {%>
-    <div id="error-alert" class="alert alert-warning fade in">
-      <a class="close" data-dismiss="alert" herf="#" aria-hidden="true">&times;</a>
-      <%= locals.error%>
-    </div>
-  <% } %>
-
+  <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">
+          <img class="android-logo-image" src="/images/thzlab.png">
+        </span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="/">Home</a>
+      <a class="mdl-navigation__link" href="/blog">Blog</a>
+      <a class="mdl-navigation__link" href="/project">Project</a>
+      <a class="mdl-navigation__link" href="/about">About Me</a>
+      <a class="mdl-navigation__link" href="/contact">Contact</a>
+      <% if (!locals.user){%>
+      <a class="mdl-navigation__link" href="/login">Login</a>
+      <a class="mdl-navigation__link" href="/reg">Register</a>
+      <%} else{%>
+      <a class="mdl-navigation__link" href="/post">Post</a>
+      <a class="mdl-navigation__link" href="/logout">Logout</a>
+      <% } %>
+    </nav>
+  </div>

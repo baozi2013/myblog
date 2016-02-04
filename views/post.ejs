@@ -1,34 +1,51 @@
 <%- include header %>
-<div class="container">
-    <h1><%= title %></h1>
+<main class="mdl-layout__content" style="margin: 0 auto">
+    <div class="mdl-cell mdl-cell--12-col">
+        <h4>Post</h4>
+    </div>
     <form method="post" role="form">
-    <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" class="form-control" name="title"/>
-    </div>
-    <% if (locals.user.name == 'zth198814'){ %>
-    <div class="form-group">
-        <div class="radio">
-            <label for="top"><input type="radio" name="top"/> Feature Post</label>
+        <div class="form-group">
+            <div class="mdl-cell mdl-cell--12-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input id="title" class="mdl-textfield__input" name="title" />
+                    <label class="mdl-textfield__label" for="title">Title</label>
+                </div>
+            </div>
         </div>
-    </div>
-    <% } %>
-    <div class="form-group">
-        <label for="category">Categories: </label>
-        <select name="category" id="categories">
-            <option value="angualar">Angular.js</option>
-            <option value="frontend">Front End</option>
-            <option value="mongodb">MongoDB</option>
-            <option value="node">Node.js</option>
-            <option value="express">Express.js</option>
-            <option value="misc">Misc</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="content">Content:</label>
-        <textarea name="content" class="form-control" rows="5"></textarea>
-    </div>
-    <input type="submit" class="btn btn-default" value="Save"/>
+        <% if (locals.user.name == 'zth198814'){ %>
+        <div class="form-group">
+            <label for="top" class="mdl-switch mdl-js-switch">
+                <input type="checkbox" id="top" name="top" class="mdl-switch__input">
+                <span class="mdl-switch__label">Feature off/on</span>
+            </label>
+        </div>
+        <% } %>
+        <div class="form-group">
+            <div class="mdl-cell mdl-cell--12-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input id="category" class="mdl-textfield__input" name="category" />
+                    <label class="mdl-textfield__label" for="category">Category</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="mdl-cell mdl-cell--12-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <textarea class="mdl-textfield__input" type="text" rows= "10" id="content" name="content"></textarea>
+                    <label class="mdl-textfield__label" for="content">Content</label>
+                </div>
+            </div>
+        </div>
+        <button type="submit" value="Save" id="login" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
+            Save
+        </button>
     </form>
-</div>
+</main>
+<footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer--left-section">
+        <button class="mdl-mini-footer--social-btn social-btn social-btn__linkedin">
+            <span class="visuallyhidden" href="https://www.linkedin.com/in/tianhengzhou">LinkedIn</span>
+        </button>
+    </div>
+</footer>
 <%- include footer %>

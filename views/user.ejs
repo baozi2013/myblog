@@ -1,14 +1,37 @@
 <%- include header %>
-<div class="container">
-    <h1 class="writer"><%= title %></h1>
+<main class="mdl-layout__content">
+<div class="blog__posts mdl-grid">
+    <div class="mdl-card something-else mdl-cell mdl-cell--12-col mdl-cell--12-col-desktop">
+        <div class="mdl-card__media mdl-color--white mdl-color-text--grey-600">
+            <img src="<%= locals.imageurl%>">
+            <h3><%= title%></h3>
+        </div>
+    </div>
     <% locals.posts.forEach(function (post, index) { %>
-<p><h2><a href="/p/<%= post._id%>"><%= post.title %></a></h2></p>
-<p class="info">
-    Author：<a href="/u/<%= post.name %>"><%= post.name %></a> |
-    Date：<%= post.time %>
-</p>
-<p>Comments: <span class="fb-comments-count" data-href="http://techbow.net:3000/p/<%= post._id%>"></span> Page View: <%= post.pv%> <span class="label label-danger"><%= post.category%></span></p>
-<p><%- post.content %></p>
-<% }) %>
-</div>
+        <div class="mdl-card coffee-pic mdl-cell mdl-cell--12-col">
+            <div class="mdl-card__media mdl-color-text--grey-50">
+                <h3><a href="/p/<%= post._id%>"><%= post.title %></a></h3>
+            </div>
+            <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+                <div class="minilogo" style="background-image: url('<%= locals.imageurl%>')"></div>
+                <div>
+                    <strong><a href="/u/<%=post.name%>"><%=post.name%></a></strong>
+                            <span>
+                                <%=post.time%>
+                                Page View: <%=post.pv%>
+                                <a href="/<%=post.category%>"><%=post.category%></a>
+                            </span>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+    </div>
+    <footer class="mdl-mini-footer">
+        <div class="mdl-mini-footer--left-section">
+            <button class="mdl-mini-footer--social-btn social-btn social-btn__linkedin">
+                <span class="visuallyhidden" href="https://www.linkedin.com/in/tianhengzhou">LinkedIn</span>
+            </button>
+        </div>
+    </footer>
+</main>
 <%- include footer %>

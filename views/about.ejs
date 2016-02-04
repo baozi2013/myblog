@@ -1,13 +1,104 @@
-<%- include header %>
-<div class="container">
-    <h1 class="writer"><%= title%></h1>
-    <div class="main">
-        <div class="row project-items">
-            <div class="col-xs-12 col-sm-6">
-                <img class="img-responsive" src="/images/Profile.jpg" alt="blog"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.css" />
+    <link rel="stylesheet" href="/stylesheets/article.css">
+</head>
+<body>
+
+<div class="blog mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <div class="blog__header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+            <span class="desktop-title mdl-layout-title">
+                <img class="android-logo-image" src="/images/thzlab.png">
+            </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+                    <i class="material-icons">search</i>
+                </label>
+                <div class="mdl-textfield__expandable-holder">
+                    <input class="mdl-textfield__input" type="text" id="search-field">
+                </div>
             </div>
-            <div class="col-xs-12 col-sm-5 project-description">
-                <h2>Tianheng Zhou: Web Developer</h2>
+            <span class="mobile-title mdl-layout-title">
+                <img class="android-logo-image" src="/images/thzlab.png">
+            </span>
+            <!-- Navigation -->
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Home</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/blog">Blog</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/project">Project</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/about">About Me</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/contact">Contact</a>
+                <% if (!locals.user){%>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/login">Login</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/reg">Register</a>
+                <%} else{%>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/post">Post</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/logout">Logout</a>
+                <% } %>
+            </nav>
+        </div>
+    </div>
+
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">
+          <img class="android-logo-image" src="/images/thzlab.png">
+        </span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="/">Home</a>
+            <a class="mdl-navigation__link" href="/blog">Blog</a>
+            <a class="mdl-navigation__link" href="/project">Project</a>
+            <a class="mdl-navigation__link" href="/about">About Me</a>
+            <a class="mdl-navigation__link" href="/contact">Contact</a>
+            <% if (!locals.user){%>
+            <a class="mdl-navigation__link" href="/login">Login</a>
+            <a class="mdl-navigation__link" href="/reg">Register</a>
+            <%} else{%>
+            <a class="mdl-navigation__link" href="/post">Post</a>
+            <a class="mdl-navigation__link" href="/logout">Logout</a>
+            <% } %>
+        </nav>
+    </div>
+    <div class="article-ribbon"></div>
+    <main class="article-main mdl-layout__content">
+        <div class="article-container mdl-grid" ng-controller="customersCtrl">
+            <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+            <div class="article-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                <div class="article-crumbs mdl-color-text--grey-500">
+                    <p>About Me</p>
+                    <p>Author: Tianhng Zhou </p>
+                </div>
+                <h3>Tianheng Zhou Web Developer</h3>
                 <p>
                     I'm a full Stack Web Developer. I'm expert in both front-end and back-end web development.
                 </p>
@@ -26,7 +117,6 @@
                     working at Google Fiber team gives me great knowledge on selenium web driver, better python
                     coding style and programming in cloud.
                 </p>
-
                 <p>
                     MEAN stack is a free and open-source JavaScript software stack for building dynamic web sites
                     and web applications.The MEAN stack makes use of MongoDB, Express.js, Angular.js, and Node.js.
@@ -35,10 +125,17 @@
                     <strong>Specialties</strong>: Responsive design, MEAN stack, TDD, Google Maps API, Yelp API,
                     Full stack web development, selenium web driver.
                 </p>
-                <a class="btn btn-default" href="/resume.pdf" download="tianhengzhou.pdf">Download Resume</a>
-                <a class="btn btn-default" href="https://github.com/tianhengzhou"><i class="fa fa-github"></i>Github Profile</a>
+                <div class="text-center">
+                    <a class="mdl-button" href="/resume.pdf" download="tianhengzhou.pdf">Download Resume</a>
+                    <a class="mdl-button" href="https://github.com/tianhengzhou">Github Profile</a>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer--left-section">
+                <button class="mdl-mini-footer--social-btn social-btn social-btn__linkedin" onclick="location.href='https://www.linkedin.com/in/tianhengzhou'">
+                </button>
+            </div>
+        </footer>
+    </main>
 <%- include footer %>

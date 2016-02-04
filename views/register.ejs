@@ -1,36 +1,57 @@
 <%- include header%>
-<div class="container">
-    <h1><%= title %></h1>
-    <form class="form-horizontal" method="post" role="form">
-    <div class="form-group">
-        <label for="name" class="col-sm-2 control-label">Username:</label>
-        <div class="col-sm-5">
-            <input type="text" name="name" class="form-control" placeholder="Username">
+<main class="mdl-layout__content" style="margin: 0 auto">
+
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col">
+            <h4>Register</h4>
+        </div>
+
+        <div class="mdl-cell mdl-cell--12-col mdl-grid--no-spacing">
+            <form method="post" role="form">
+                <div class="mdl-cell mdl-cell--10-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input id="username" class="mdl-textfield__input" name="name" />
+                        <label class="mdl-textfield__label" for="username">Username</label>
+                    </div>
+                    <div id="usernameError" class="login-error"></div>
+                </div>
+
+                <div class="mdl-cell mdl-cell--10-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input id="password" class="mdl-textfield__input" type="password" name="password" />
+                        <label class="mdl-textfield__label" for="password">Password</label>
+                    </div>
+                    <div id="passwordError" class="login-error"></div>
+                </div>
+                <div class="mdl-cell mdl-cell--10-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input id="password-repeat" class="mdl-textfield__input" type="password" name="password-repeat" />
+                        <label class="mdl-textfield__label" for="password-repeat">Repeat Password</label>
+                    </div>
+                    <div id="passwordError" class="login-error"></div>
+                </div>
+                <div class="mdl-cell mdl-cell--10-col">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input id="email" class="mdl-textfield__input" type="email" name="email" />
+                        <label class="mdl-textfield__label" for="email">Email</label>
+                    </div>
+                    <div id="passwordError" class="login-error"></div>
+                </div>
+
+                <div class="mdl-cell mdl-cell--10-col">
+                    <button type="submit" value="Register" id="Register" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
+                        Register
+                    </button>
+                </div>
+            </form>
+
         </div>
     </div>
-    <div class="form-group">
-        <label for="password" class="col-sm-2 control-label">Password:</label>
-        <div class="col-sm-5">
-            <input type="password" name="password" class="form-control" placeholder="Password">
-        </div>
+</main>
+<footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer--left-section">
+        <button class="mdl-mini-footer--social-btn social-btn social-btn__linkedin" onclick="location.href='https://www.linkedin.com/in/tianhengzhou'">
+        </button>
     </div>
-    <div class="form-group">
-        <label for="password" class="col-sm-2 control-label">Repeat Password:</label>
-        <div class="col-sm-5">
-            <input type="password" name="password-repeat" class="form-control" placeholder="Repeat Password">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="name" class="col-sm-2 control-label">Email:</label>
-        <div class="col-sm-5">
-            <input type="email" name="email" class="form-control" placeholder="Email">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-5">
-            <input type="submit" value="Register" class="btn btn-default"/>
-        </div>
-    </div>
-</form>
-</div>
+</footer>
 <%- include footer%>

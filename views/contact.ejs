@@ -1,37 +1,42 @@
 <%- include header %>
-<div class="container">
-    <h1 class="writer"><%= title%></h1>
-    <div class="row main">
-        <div class="col-xs-12 col-sm-6">
-            <form class="form-horizontal" method="POST" action="////formspree.io/zth198814@gmail.com">
-                <div class="form-group">
-                    <label class="control-label col-xs-2" for="_replyto">Email:</label>
-                    <div class="col-xs-12 col-sm-10">
-                        <input class="form-control" type="email" name="_replyto" placeholder="Your email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-xs-2" for="message">Message:</label>
-                    <div class="col-xs-12 col-sm-10">
-                        <textarea class="form-control" name="message" rows="5" placeholder="Your message"></textarea>
-                    </div>
-                </div>
-                <input type="hidden" name="_next" value="http://thzlab.herokuapp.com/thanks"/>
-                <input type="text" name="_gotcha" style="display:none">
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-xs-10">
-                        <button class="btn btn-default" type="submit">Send Message</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="col-xs-12 col-sm-6 text-center">
-            <p>
-                You can also visit my Github or download my resume
-            </p>
-            <a class="btn btn-default" href="/resume.pdf" download="tianhengzhou.pdf">Download Resume</a>
-            <a class="btn btn-default" href="https://github.com/tianhengzhou"><i class="fa fa-github"></i>Github Profile</a>
-        </div>
+<main class="mdl-layout__content" style="margin: 0 auto">
+    <div class="mdl-cell mdl-cell--12-col">
+        <h4>Get In Touch</h4>
     </div>
-</div>
+    <form method="post" role="form">
+        <div class="form-group">
+            <div class="mdl-cell mdl-cell--12-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input id="email" class="mdl-textfield__input" name="_replyto" />
+                    <label class="mdl-textfield__label" for="email">Your Email</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="mdl-cell mdl-cell--12-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <textarea class="mdl-textfield__input" type="text" rows= "5" id="message" name="message"></textarea>
+                    <label class="mdl-textfield__label" for="message">Your Message</label>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="_next" value="http://thzlab.herokuapp.com/thanks"/>
+        <input type="text" name="_gotcha" style="display:none">
+        <button type="submit" value="Send" id="send" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored">
+            Send
+        </button>
+    </form>
+    <div class="mdl-cell mdl-cell--12-col">
+        <a class="mdl-button" href="/resume.pdf" download="tianhengzhou.pdf">Download Resume</a>
+        <a class="mdl-button" href="https://github.com/tianhengzhou">Github Profile</a>
+    </div>
+</main>
+
+<footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer--left-section">
+        <button class="mdl-mini-footer--social-btn social-btn social-btn__linkedin">
+            <span class="visuallyhidden" href="https://www.linkedin.com/in/tianhengzhou">LinkedIn</span>
+        </button>
+    </div>
+</footer>
 <%- include footer %>

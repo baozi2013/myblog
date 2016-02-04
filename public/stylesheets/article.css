@@ -1,0 +1,181 @@
+body::before {
+    background-size: cover;
+    background-attachment: fixed;
+    content: '';
+    will-change: transform;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    position: fixed;
+}
+@media (max-width: 512px)  and (min-resolution: 1.5dppx),
+(max-width: 1024px) and (max-resolution: 1.5dppx) {
+    body::before {
+        background-image: url('/images/bg.png');
+    }
+}
+@media (min-width: 513px)  and (max-width: 1024px) and (min-resolution: 1.5dppx),
+(min-width: 1025px) and (max-width: 2048px) and (max-resolution: 1.5dppx)  {
+    body::before {
+        background-image: url('/images/bg.png');
+    }
+}
+@media (min-width: 1025px) and (min-resolution: 1.5dppx),
+(min-width: 2049px) and (max-resolution: 1.5dppx) {
+    body::before {
+        background-image: url('/images/bg.png');
+    }
+}
+body .blog {
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+.blog .blog__header{
+    background-color: #fff;
+    color: #000;
+}
+.blog__header .mdl-navigation__link{
+    color: #000;
+}
+.blog .blog__posts {
+    max-width: 1000px;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+.mdl-layout__header .mdl-layout__drawer-button{
+    color: #000;
+}
+.mdl-menu__container {
+    z-index: 50;
+}
+.blog.mdl-layout .mdl-layout__content {
+    padding-top: 40px;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+.article-ribbon {
+    width: 100%;
+    height: 40vh;
+    background-color: #3F51B5;
+    flex-shrink: 0;
+}
+
+.article-main {
+    margin-top: -35vh;
+    flex-shrink: 0;
+}
+
+.article-header .mdl-layout__header-row {
+    padding-left: 40px;
+}
+
+.article-container {
+    max-width: 1600px;
+    width: calc(100% - 16px);
+    margin: 0 auto;
+}
+
+.article-content {
+    border-radius: 2px;
+    padding: 80px 56px;
+    margin-bottom: 80px;
+}
+
+.article-layout.is-small-screen .article-content {
+    padding: 40px 28px;
+}
+
+.article-content h3 {
+    margin-top: 48px;
+}
+
+.mdl-grid {
+    display: flex !important;
+}
+
+.social-btn {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    margin: 0 16px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    opacity: 0.46;
+    border-radius: 2px;
+}
+.social-btn__linkedin {
+    background-image: url('https://www.gstatic.com/images/icons/material/system/2x/post_linkedin_black_24dp.png');
+}
+.social-btn__share {
+    color: rgba(0, 0, 0, 0.54);
+    background: transparent;
+}
+
+.blog .mdl-mini-footer {
+    margin-top: 80px;
+    height: 120px;
+    padding: 40px;
+    align-items: center;
+    background-color: white;
+    box-sizing: border-box;
+}
+.mobile-title{
+    display: none;
+}
+.text-center{
+    text-align: center ;
+    margin: auto;
+    padding: 0 20% ;
+}
+.blog .blog__posts > .demo-nav > .demo-nav__button {
+    color: white;
+    text-decoration: none;
+}
+.blog .blog__posts > .demo-nav .mdl-button {
+    color: rgba(0,0,0,0.54);
+    background-color: white;
+}
+.blog .blog__posts > .demo-nav > .demo-nav__button:first-child .mdl-button {
+    margin-right: 16px;
+}
+.blog .blog__posts > .demo-nav > .demo-nav__button:last-child .mdl-button {
+    margin-left: 16px;
+}
+/**** Mobile layout ****/
+@media (max-width: 900px) {
+    .mdl-layout__header .mdl-navigation {
+        display: none;
+    }
+    .desktop-title{
+        display: none;
+    }
+    .mobile-title{
+        display: block !important;
+        position: absolute;
+        left: calc(50% - 70px);
+        top: 12px;
+        transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* WebViews in iOS 9 break the "~" operator, and WebViews in OS X 10.10 break
+       consecutive "+" operators in some cases. Therefore, we need to use both
+       here to cover all the bases. */
+    .mdl-textfield.is-focused ~ .mdl-layout-title,
+    .mdl-textfield.is-focused + .mdl-navigation + .mdl-layout-title{
+        opacity: 0;
+    }
+
+    .mdl-textfield.is-focused {
+        width: calc(100% - 48px);
+    }
+
+    .mdl-textfield .mdl-textfield__expandable-holder {
+        width: 100%;
+    }
+}
