@@ -1,7 +1,6 @@
-.idea/*.xml
+.idea
 .DS_Store
 .name
-.idea
 Project-1-Portoflio.iml
 bower
 node_modules/.bin
