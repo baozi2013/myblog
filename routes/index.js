@@ -15,7 +15,7 @@ var crypto = require('crypto'),
 
 module.exports = function (app) {
   app.get('/helloworld', function (req, res) {
-    res.send('hello jenkins')
+    res.send('hello jenkin')
   });
   app.get('/', function (req, res) {
     Post.getTen(function (err, posts) {
