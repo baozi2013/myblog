@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.css" />
     <link rel="stylesheet" href="/stylesheets/blog.css">
 </head>
-<body>
+<body ng-app="myApp" >
 
 <div class="blog mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <div class="blog__header mdl-layout__header mdl-layout__header--waterfall">
@@ -90,7 +90,7 @@
     </div>
     <main class="mdl-layout__content">
 
-        <div ng-app="myApp" class="main">
+        <div class="main">
             <div ng-controller="customersCtrl">
                 <div class="blog__posts mdl-grid">
                     <div class="mdl-card mdl-cell mdl-cell--12-col" ng-repeat="post in posts | filter: searchWord">
