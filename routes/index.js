@@ -6,7 +6,7 @@ var crypto = require('crypto'),
     User = require('../models/user.js'),
     Post = require('../models/post.js'),
     fs = require('fs');
-/* GET home page. */
+/*   GET home page. */
 /*router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });*/
@@ -14,6 +14,9 @@ var crypto = require('crypto'),
 /*module.exports = router;*/
 
 module.exports = function (app) {
+  app.get('/helloworld', function (req, res) {
+    res.send('hello world')
+  });
   app.get('/', function (req, res) {
     Post.getTen(function (err, posts) {
       //console.log(posts);
