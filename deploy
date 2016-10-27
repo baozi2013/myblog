@@ -1,0 +1,8 @@
+#!/bin/sh      
+exec sudo su <<EOF
+ cd ~/thzlab/myblog  
+ git pull       
+ npm install       
+ pm2 restart all
+ exit
+EOF
