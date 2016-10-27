@@ -46,7 +46,7 @@
                     <i class="material-icons">search</i>
                 </label>
                 <div class="mdl-textfield__expandable-holder">
-                    <input class="mdl-textfield__input" type="text" id="search-field">
+                    <input class="mdl-textfield__input" type="text" id="search-field" ng-model="searchWord">
                 </div>
             </div>
             <span class="mobile-title mdl-layout-title">
@@ -90,7 +90,7 @@
         </nav>
     </div>
         <main class="mdl-layout__content" ng-controller="customersCtrl" ng-init="postid = '<%=postId%>'">
-            <div class="blog__posts mdl-grid" ng-repeat="post in posts" ng-if="post._id == postid" ng-cloak>
+            <div class="blog__posts mdl-grid" ng-repeat="post in posts | filter: searchWord" ng-if="post._id == postid" ng-cloak>
                 <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
                     <div class="mdl-card__media mdl-color-text--grey-50 mdl-color--teal-100">
                         <h3>{{post.title}}</h3>
