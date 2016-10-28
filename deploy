@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-#!/bin/sh      
-exec sudo su <<EOF
- cd ~/thzlab/myblog  
- git pull       
- npm install       
- pm2 restart all
- exit
-EOF
-=======
 #!/bin/sh
 ssh root@104.131.139.139 <<EOF
  cd ~/thzlab/myblog
@@ -16,4 +6,4 @@ ssh root@104.131.139.139 <<EOF
  pm2 restart all
  exit
 EOF
->>>>>>> a46d9b5b87aa8499a5334baba09067541bbc87ca
+
