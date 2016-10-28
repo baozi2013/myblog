@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/bin/sh      
 exec sudo su <<EOF
  cd ~/thzlab/myblog  
@@ -6,3 +7,13 @@ exec sudo su <<EOF
  pm2 restart all
  exit
 EOF
+=======
+#!/bin/sh
+exec sudo su <<EOF
+ cd ~/thzlab/myblog
+ git pull
+ npm install
+ pm2 restart all
+ exit
+EOF
+>>>>>>> a46d9b5b87aa8499a5334baba09067541bbc87ca
