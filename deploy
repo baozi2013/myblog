@@ -1,5 +1,5 @@
-#!/bin/sh
-exec sudo su <<EOF
+-#!/bin/sh
+ssh root@104.131.139.139 <<EOF
  cd ~/thzlab/myblog
  git pull
  npm install
