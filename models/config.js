@@ -6,7 +6,7 @@ var rootPath = path.normalize(__dirname + '/../');
 module.exports={
     dev: {
         cookieSecret: 'myblog',
-        connectionstring: 'mongodb://zth198814:616288Xie@ds047752.mongolab.com:47752/tianhengzhou',
+        connectionstring: 'mongodb://xxxxxx:xxxxxx@ds047752.mongolab.com:47752/tianhengzhou',
         rootpath:rootPath,
         port: process.env.Port || 3000
     },
